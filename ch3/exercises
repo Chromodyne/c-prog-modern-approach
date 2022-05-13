@@ -1,0 +1,16 @@
+Chapter III - Exercises
+=======================
+
+1. What output do the following calls of printf produce?
+
+	(a) printf("%6d, %4d", 86, 1040);
+
+		>| ____86,_1040
+		
+		[_ denotes a space.]
+
+	(b) printf("%12.5e", 30.253);
+
+		>| 3.02530e+1
+
+	(c) printf

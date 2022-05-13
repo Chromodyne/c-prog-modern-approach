@@ -1,0 +1,29 @@
+Definitions
+
+
+	directive - Commands supplied to the preprocessor that start with #
+		e.g. #include<stdio.h>
+	
+	identifier - names given to variables, functions, macros, etc.
+		e.g. int health //Health is the identifier
+	
+	mantissa - the fractional part of a floating-point number
+		e.g. 3.1416 -> 1416 is the mantissa
+
+	statement - Commands to be executed when the program runs.
+		e.g. printf("Hello, World!");
+
+	string literal - a series of characters enclosed in double quotes.
+		e.g. "This is a string literal."
+
+	variable - a storage location for data
+		e.g. int i = 1;
+
+	type - a specifier for the type of data a variable will hold
+		e.g. int, bool, char, . . .
+
+Special Characters
+
+	\n - New line character
+	\b - Backspace character.
+	\t - Tab character.
