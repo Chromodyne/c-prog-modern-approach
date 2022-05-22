@@ -82,3 +82,60 @@ Condense the dweight.c program by (1) replacing the assignments to height, lengt
 
 ```
 
+---
+
+**Exercise 4**
+
+Write a program that declares several `int` and `float` variables―without initializing them―and then prints their values. Is there any pattern to the values? (Usually there isn't.) 
+
+
+**Answer:** (Yours may differ.)
+
+```C
+    #include<stdio.h>
+
+    int main() {
+
+        //Uninitalized variable declarations.
+        int x;
+        int y;
+        float j;
+        float k;
+
+        printf("%d\n%d\n%f\n%f\n", x, y, j, k);
+
+        return 0
+
+    }
+```
+
+No pattern was observed. Garbage values were printed.
+
+---
+
+**Exercise 5**
+
+Which of the following are not legal C identifiers?
+
+```
+    (a) 100_bottles
+    (b) _100_bottles
+    (c) one__hundred__bottles
+    (d) bottles_by_the_hundred
+```
+
+**Answer:** `(a)` is not a legal identifier. Variables starting with a number are disallowed. Variables must start with either an underscore `_` or letter.
+
+---
+
+**Exercise 6**
+
+Why is it not a good idea for an identifier to contain more than one adjacent underscore (as in current__balance, for example)?
+
+**Answer:** 
+
+Having multiple underscores hamper coad readability as it can be difficulty, at a glance, to discern how many underscores were used.
+
+---
+
+**Exercise 7**
