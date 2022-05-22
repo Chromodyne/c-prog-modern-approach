@@ -139,3 +139,74 @@ Having multiple underscores hamper coad readability as it can be difficulty, at 
 ---
 
 **Exercise 7**
+
+Which of the following are keywords in C?
+
+```
+    (a) for
+    (b) If
+    (c) main
+    (d) printf
+    (e) while
+```
+**Answer:**
+
+`(a)` and `(e)` are keywords in C. `(b)` is not considered a keyword in C because it is capitalized. If written as `if` it would be considered a keyword. `main` is a reserved function name but it is not considered a keyword by definition.
+
+---
+
+**Exercise 8**
+
+How many tokens are there in the following statement?
+
+```C
+    answer=(3*q-p*p)/3;
+```
+
+**Answer:**
+
+There are a total of 14 tokens in the statement.
+
+Tokens include:
+
+```
+    (1)  answer
+    (2)  =
+    (3)  (
+    (4)  3
+    (5)  *
+    (6)  q
+    (7)  -
+    (8)  p
+    (9)  *
+    (10) p
+    (11) )
+    (12) /
+    (13) 3
+    (14) ;
+```
+
+However, only 7 of them are unique. Don't forget the definition of a token! A common mistake is to forget to count your **statement terminator**(`;`) in the count.
+
+---
+
+**Exercise 9**
+
+Insert spaces between the tokens in Exercise 8 to make the statement easier to read.
+
+**Answer:**
+
+```C
+    answer = ( 3 * q - p * p) / 3 ;
+```
+**Note:** A bit strange to put a space before the `;` in my opinion but whatever.
+
+---
+
+**Exercise 10**
+
+In the dweight.c progam, which spaces are essential?
+
+**Answer:**
+
+The only essential spaces are the space in the `#include <stdio.h>` preprocessor directive and the space in the `return 0` statement.
