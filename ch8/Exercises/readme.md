@@ -151,18 +151,32 @@ Using the shortcuts described in Section 8.2, shrink the initializer for the seg
 
 ### **Answer:** ###
 
+---
+
+## Exercise 8 ##
+
+### **Question:** ###
+
+Write a declaration for a two-dimensional array named `temperature_readings` that stores one month of hourly temperature readings. (For simplicity, assume that a mnth has 30 days.) The rows of the array should represent days of the month; the columns should represent hours of the day.
+
+### **Answer:** ###
+
 ```C
-    const int segments[10][7] = {{1, 1, 1, 1, 1, 1, 0},     //0
-                                 {0, 1, 1, 0, 0, 0, 0},     //1
-                                 {1, 1, 0, 1, 1, 0, 1},     //2
-                                 {1, 1, 1, 1, 0, 0, 1},     //3
-                                 {0, 1, 1, 0, 0, 1, 1},     //4
-                                 {1, 0, 1, 1, 0, 1, 1},     //5
-                                 {1, 0, 1, 1, 1, 1, 1},     //6
-                                 {1, 1, 1, 0, 0, 0, 0},     //7
-                                 {1, 1, 1, 1, 1, 1, 1},     //8
-                                 {1, 1, 1, 1, 0, 1, 1}      //9
-                                 };                    
+    double temperature_readings[30][24] = {0};
 ```
 
+Remember that for two-dimensional arrays the first number in brackets represents rows and the second represents columns. We are using a `double` as the type for the array since temperatures often include fractions of a degree in Celsius. We could have also used `float` if less precision was necessary. By putting only  a single `0` in brackets for the initializer, the entire array will be initialized with zeroes.
+
 ---
+
+## Exercise 9 ##
+
+### **Question:** ###
+
+Using the array in Exercise 8, write a program fragment that computes the average temperature for a month (averaged over all the days of the month and all hours of the day).
+
+### **Answer:** ###
+
+```C
+    for ()
+```
