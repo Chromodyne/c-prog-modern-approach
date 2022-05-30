@@ -1,21 +1,22 @@
 #include<stdio.h>
 
+//Use a symbolic constant in case we decide to change the number of elements in the array later.
 #define N 10
 
-int main() {
+int main(void) {
 
-    int a[N], i;
+    int numsEntered[N];
 
     printf("Enter 10 numbers: ");
     
-    for (i = 0; i < N; i++) {
-        scanf("%d", &a[i]);
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &numsEntered[i]);
     }
 
     printf("In reverse order: ");
 
-    for (i = N - 1; i >= 0; i--) {
-        printf(" %d", a[i]);
+    for (int i = N - 1; i >= 0; i--) {
+        printf("%d ", numsEntered[i]);
     }
 
     printf("\n");
