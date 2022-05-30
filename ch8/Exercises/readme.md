@@ -75,8 +75,8 @@ int main(void) {
     printf("%d\n", fib_numbers[0]);
     printf("%d\n", fib_numbers[1]);
 
-    //Iterate through the array calculating the new Fibonacci number. Currently 40 is hardcoded. We calculate the array
-    // size in the future using sizeof to make it independent.
+    //Iterate through the array calculating the new Fibonacci number. Currently 40 is hardcoded. We can calculate the array
+    //size in the future using sizeof to make it independent.
     for (int i = 2; i < 39; i++) {
 
         fib_numbers[i] = fib_numbers[i - 1] + fib_numbers[i-2];
@@ -90,5 +90,79 @@ int main(void) {
 ```
 
 Most of the pertinent points are included in the comments. There are some other ways to accomplish this but I feel this is solid enough. The major issue is that we cannot easily change the number of Fibonacci numbers to print in this current version. We would need to remove the "magic numbers" and make it so the array size is calculated instead of hardcoded into the for loop.
+
+---
+
+## Exercise 6 ##
+
+### **Question:** ###
+
+Calculators, watches, and other electronic devices often rely on seven-segment displays for numerical output. To form a digit, such devices "turn on" some of the seven segments while leaving others "off":
+ 
+```
+ _        _    _         _    _    _    _    _ 
+| |   |   _|   _|  |_|  |_   |_     |  |_|  |_|
+|_|   |  |_    _|    |   _|  |_|    |  |_|   _|
+
+```
+
+Suppose that we want to set up an array that remembers which segments should be "on" for each digit. Let's number the segments as follows.
+
+```
+    0
+   561
+   432
+
+```
+
+Here's what the array might look like, with each row representing one digit:
+
+```c
+    const int segments[10][7] = {{1, 1, 1, 1, 1, 1, 0}, ... };
+```
+
+I've given you the first row of the initializer; fill in the rest.
+
+### **Answer:** ###
+
+```C
+    const int segments[10][7] = {{1, 1, 1, 1, 1, 1, 0},     //0
+                                 {0, 1, 1, 0, 0, 0, 0},     //1
+                                 {1, 1, 0, 1, 1, 0, 1},     //2
+                                 {1, 1, 1, 1, 0, 0, 1},     //3
+                                 {0, 1, 1, 0, 0, 1, 1},     //4
+                                 {1, 0, 1, 1, 0, 1, 1},     //5
+                                 {1, 0, 1, 1, 1, 1, 1},     //6
+                                 {1, 1, 1, 0, 0, 0, 0},     //7
+                                 {1, 1, 1, 1, 1, 1, 1},     //8
+                                 {1, 1, 1, 1, 0, 1, 1}      //9
+                                 };                    
+```
+
+Very simple exercise, if tedious. Just follow the provided order of segments and any segment that should be on should have a 1 in the proper index.
+
+---
+
+## Exercise 7 ##
+
+### **Question:** ###
+
+Using the shortcuts described in Section 8.2, shrink the initializer for the segments array (Exercise 6) as much as you can.
+
+### **Answer:** ###
+
+```C
+    const int segments[10][7] = {{1, 1, 1, 1, 1, 1, 0},     //0
+                                 {0, 1, 1, 0, 0, 0, 0},     //1
+                                 {1, 1, 0, 1, 1, 0, 1},     //2
+                                 {1, 1, 1, 1, 0, 0, 1},     //3
+                                 {0, 1, 1, 0, 0, 1, 1},     //4
+                                 {1, 0, 1, 1, 0, 1, 1},     //5
+                                 {1, 0, 1, 1, 1, 1, 1},     //6
+                                 {1, 1, 1, 0, 0, 0, 0},     //7
+                                 {1, 1, 1, 1, 1, 1, 1},     //8
+                                 {1, 1, 1, 1, 0, 1, 1}      //9
+                                 };                    
+```
 
 ---
