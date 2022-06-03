@@ -1,0 +1,146 @@
+Chapter 9 Exercises
+---
+
+## Exercise 1 ##
+
+### **Question:** ###
+
+The following function, which computes the area of a triangle, contains two errors. Locate the errors and show how to fix them. (*Hint:* There are no errors in the formula.)
+
+```C
+    double triangle_area(double base, double height) 
+    double product;
+    {
+        product = base * height;
+        return product / 2;
+    }
+```
+
+### **Answer:** ###
+
+**Error 1:** The parameter `height` has no type set.
+
+**Error 2:** The code block surrounded by braces `{}` should be directly after the `triangle_area` function declaration and the variable `product` should be declared either in the global scope of the file or in the local scope of the new function.
+
+**Fixed Code:**
+
+```C
+    double triangle_area(double base, double height) {
+        double product;
+        product = base * height;
+
+        return product / 2;
+    }
+```
+
+---
+
+## Exercise 2 ##
+
+### **Question:** ###
+
+Write a function `check(x, y, n)` that returns 1 if both `x` and `y` fall between 0 and n-1 inclusive. The function should return 0 otherwise. Assume `x`, `y`, and `n` are all of type `int`. 
+
+### **Answer:** ###
+
+```C
+    int check(int x, int y, int n) {
+
+        if (x <= (n - 1) && y <= (n - 1) && x >= 0 && y >= 0) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+
+    }
+```
+
+A simple if, else statement can be used to provide this functionality. A switch statement may also be used. Remember to properly setup your parameters in the function declaration.
+
+---
+
+## Exercise 3 ##
+
+### **Question:** ###
+
+Write a function `gcd(m, n)` that calculates the greatest common divisor  of the integers `m` and `n`. (Programming Project 2 in Chapter 6 describes Euclid's algorithm for computing the GCD.)
+
+### **Answer:** ###
+
+```C
+    int gcd(int m, int n) {
+
+        int remain, greatest_divisor;
+
+        while (n != 0) {
+
+            remain = m % n;
+            m = n;
+            n = remain;
+            
+        }
+
+        return greatest_divisor;
+
+    }
+```
+As specified in the hint, recall Ch.6/Project 02. My return variable is given a bit of a longer name to distinguish it from the function name for greater code readability; however, they can both have the same name (gcd) if desired.
+
+---
+
+## Exercise 4 ##
+
+### **Question:** ###
+
+Write a function `day_of_year(month, day, year)` that returns the day of the year (an integer between 1 and 366) specified by three arguments.
+
+### **Answer:** ###
+
+```C
+    int day_of_year(int month, int day, int year) {
+
+        for (int i = 1; i < month; i++) {
+
+            switch (i) {
+
+                //Months with 31 days.
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                    day += 31;
+                    break;
+
+                //Months with 30 days
+                case 4: case 6: case 9: case 11:
+                    day += 30;
+                    break;
+
+                //Special case for February. We have to also check if it's a leap year.
+                case 2: 
+                    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                        day += 29;
+                    } else {
+                        day += 28;
+                    }
+
+            }
+
+        }
+
+        return day;
+
+    }
+```
+
+This exercise is asking for the cumulative day of the year. A switch statement makes this easy. Don't forget the special case for February which has either 28 or 29 days depending on whether or not it is a leap year. The algorithm for determining leap years can be found [here](https://en.wikipedia.org/wiki/Leap_year#/media/File:Leap_Year_Algorithm.png). 
+
+Also, notice we are modifying and returning the parameter variable `day`. Since C **passes arguments by value** instead of by reference we can safely do this without worrying about permanently modifying the variable outside of the function call.
+
+---
+
+## Exercise 5 ##
+
+### **Question:** ###
+
+Write a function `num_digits(n)` that returns the number of digits in `n` (a positive integer) *Hint:* To determine the number of digits in a number `n`, divide it by 10 repeatedly. When `n` reaches 0, the number of divisions indicates how many digits `n` originally had.
+
+### **Answer:** ###
