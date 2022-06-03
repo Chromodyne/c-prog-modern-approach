@@ -133,7 +133,7 @@ Write a function `day_of_year(month, day, year)` that returns the day of the yea
 
 This exercise is asking for the cumulative day of the year. A switch statement makes this easy. Don't forget the special case for February which has either 28 or 29 days depending on whether or not it is a leap year. The algorithm for determining leap years can be found [here](https://en.wikipedia.org/wiki/Leap_year#/media/File:Leap_Year_Algorithm.png). 
 
-Also, notice we are modifying and returning the parameter variable `day`. Since C **passes arguments by value** instead of by reference we can safely do this without worrying about permanently modifying the variable outside of the function call.
+Also, notice we are modifying and returning the parameter variable `day` in the function. Since C **passes arguments by value** instead of by reference we can safely do this without worrying about permanently modifying the variable outside of the function call.
 
 ---
 
@@ -144,3 +144,52 @@ Also, notice we are modifying and returning the parameter variable `day`. Since 
 Write a function `num_digits(n)` that returns the number of digits in `n` (a positive integer) *Hint:* To determine the number of digits in a number `n`, divide it by 10 repeatedly. When `n` reaches 0, the number of divisions indicates how many digits `n` originally had.
 
 ### **Answer:** ###
+
+```C
+    int num_digits(unsigned int n) {
+
+        int digits = 0;
+
+        do {
+            
+            n /= 10;
+            digits++;
+
+        } while (n != 0)
+
+        return digits;
+
+    }
+```
+
+A `do while` loop will work great here. We have to use it over a simple `while` loop since if the argument received is zero it will never activate. The number `0` is considered a digit. Since the instructions explicitly state that `n` is a **positive integer** we will use an `unsigned int` as our parameter type; although, we could use an `unsigned long` if we're worried about overflow. We could also omit the `int` portion and declare it as simple `unsigned`. The function return type can also be declared as `unsigned` since there is no such thing as a negative number of digits.
+
+---
+
+## Exercise 6 ##
+
+### **Question:** ###
+
+Write a function `digit(n, k)` that returns the k<sup>th</sup> digit (from the right) in `n` (a positive integer). For example, `digit(829, 1)` returns 9, `digit(829, 2)` returns 2, and `digit(829, 3)` returns 8. If `k` is greater than the number of digits in `n`, have the function return 0.
+
+### **Answer:** ###
+
+```C
+    int digit(unsigned int n, unsigned int k) {
+
+        
+
+    }
+```
+
+---
+
+## Exercise 7 ##
+
+### **Question:** ###
+
+
+### **Answer:** ###
+
+
+---
