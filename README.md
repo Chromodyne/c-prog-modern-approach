@@ -1,7 +1,7 @@
 # c-prog-modern-approach
 This repository contains my personal solutions and notes for the textbook: **C Programming: A Modern Approach**. I recently to get up to date on C programming so that I can more easily understand the low level functionality of computers and also to help me work on my osdev project.
 
-This repo is currently a work-in-progress and is by no means complete. There may be omissions currently for exercises and projects from chapters prior to the most recent one uploaded. This is an effect of my learning methodology. I like to read ahead and work some exercises and projects from future chapters without necessarily fully completing all of the work from older chapters. I then return to previous chapters for completion. I find this method of learning works well for me as it helps reinforce old topics and also serves to keep the learning process fresh and enjoyable.
+This repo is currently a work-in-progress and is by no means complete. There may be omissions currently for exercises and projects from chapters prior to the most recent one uploaded. This is an effect of my learning methodology. I like to read ahead and work some exercises and projects from future chapters without necessarily fully completing all of the work from older chapters. At a future date, I then return to previous chapters for completion of the projects and exercise. I find this method of learning works well for me as it helps reinforce old topics and also serves to keep the learning process fresh and enjoyable.
 
 **Textbook Used:** C Programming: A Modern Approach - http://knking.com/books/c2/index.html
 
