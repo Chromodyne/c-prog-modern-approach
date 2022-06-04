@@ -97,39 +97,6 @@ Write a function `day_of_year(month, day, year)` that returns the day of the yea
 
 ### **Answer:** ###
 
-```C
-    int day_of_year(int month, int day, int year) {
-
-        for (int i = 1; i < month; i++) {
-
-            switch (i) {
-
-                //Months with 31 days.
-                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-                    day += 31;
-                    break;
-
-                //Months with 30 days
-                case 4: case 6: case 9: case 11:
-                    day += 30;
-                    break;
-
-                //Special case for February. We have to also check if it's a leap year.
-                case 2: 
-                    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-                        day += 29;
-                    } else {
-                        day += 28;
-                    }
-
-            }
-
-        }
-
-        return day;
-
-    }
-```
 
 This exercise is asking for the cumulative day of the year. A switch statement makes this easy. Don't forget the special case for February which has either 28 or 29 days depending on whether or not it is a leap year. The algorithm for determining leap years can be found [here](https://en.wikipedia.org/wiki/Leap_year#/media/File:Leap_Year_Algorithm.png). 
 
@@ -177,16 +144,27 @@ Write a function `digit(n, k)` that returns the k<sup>th</sup> digit (from the r
 ```C
     int digit(unsigned int n, unsigned int k) {
 
-        
+        while (k-- >= 0) {
+            if (n /= 10 == 0) {
+                return 0;
+            }
+
+        }
+
+        return n % 10;
 
     }
 ```
+
+A simple function all things considered. Remember the procedure for how to determine the value of digits in the various powers of 10 explored in previous chapters. I am also opting to use `usigned int` as my parameter types due to the exercise specifically mentioning it will be a positive integer.
 
 ---
 
 ## Exercise 7 ##
 
 ### **Question:** ###
+
+Suppose 
 
 
 ### **Answer:** ###
