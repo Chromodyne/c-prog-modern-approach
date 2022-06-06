@@ -246,3 +246,59 @@ What will be the output of the following program?
 ```
 
 ### **Answer:** ###
+
+The ouput of this program will be:
+
+```
+~$ i = 1, j = 2
+```
+
+The `swap` function will not actually perform the swapping of the variables of `i` and `j` as the programmer intended. This is because C **passes arguments by value** instead of **by reference** by default. This means that the act of changing `a` and `b` in the `swap` function will not actually change `i` and `j` which were passed in as arguments. Once `swap` returns the values of `a` and `b` are discarded. 
+
+We can utilize **addresses (&) and pointers (*)** to gain this functionality as will be discussed in **Chapter 11**.
+
+---
+
+## Exercise 10 ##
+
+### **Question:** ###
+
+Write functions that return the following values. (Assume that `a` and `n` are parameters where `a` is an array pf `int` values and `n` is the length of the array.)
+
+```
+    (a) The largest element in a.
+    (b) The average of all elements in a.
+    (c) The number of positive elements in a.
+```
+
+### **Answer:** ###
+
+(a)
+```C
+    int Largest_Element(int a[], int n) {
+        
+        //Iterate through all elements of the array.
+        for (int i = 0; i < a[n]; i++) {
+
+            
+
+        }
+
+    }
+```
+
+(b)
+```C
+    int Array_Average(int a[], int n) {
+
+    }
+```
+
+(c)
+```C
+    int Positive_Elements(int a[], int n) {
+
+    }
+```
+
+---
