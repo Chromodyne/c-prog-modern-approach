@@ -375,7 +375,7 @@ The `grades` array will contain letter grades (A, B, C, D, or F, either upper-ca
                     sum += 2;
                     break;
                 case 'D':
-                    sum += 1
+                    sum += 1;
                     break;
                 case 'F':
                     break;
@@ -385,7 +385,7 @@ The `grades` array will contain letter grades (A, B, C, D, or F, either upper-ca
 
         }
 
-    //Return the average. Cast sum variable to float.
+    //Return the average. Cast variables to float.
         return ( (float) sum / (float) n);
 
     }
