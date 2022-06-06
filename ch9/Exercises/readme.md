@@ -344,7 +344,7 @@ Not much to say about these. All require iterating through the array with a `for
 
 ### **Question:** ###
 
-Write the following function
+Write the following function:
 
 ```C
     float compute_GPA(char grades[], int n);
@@ -357,11 +357,11 @@ The `grades` array will contain letter grades (A, B, C, D, or F, either upper-ca
 ```C
     float compute_GPA(char grades[], int n) {
 
-        //Used to store total grade points. Could be a float.
+        //Used to store total grade points. Could be a float to prevent later casting.
         int sum = 0;
 
         //Iterate through the array.
-        for(int i = 0; i < n; i++>) {
+        for(int i = 0; i < n; i++) {
 
             //Check which letter is in the current element and add to sum accordingly.
             switch(grades[i]) {
@@ -394,3 +394,121 @@ The `grades` array will contain letter grades (A, B, C, D, or F, either upper-ca
 Nothing particularly difficult. It makes good use of previous knowledge. We iterate through the array and then use a `switch` statement to check what character the current element of the array holds. We return the average. Casts to `float` for the `sum` and 'n' variables were used in the return statment. We could have changed `sum` to a `float` from the get-go; however, I decided to do it the way shown for performance reasons as calculations using integers tend be faster than those using floating-point numbers.
 
 ---
+
+## Exercise 12 ##
+
+### **Question:** ###
+
+Write the following functon:
+
+```C
+    double inner_product(double a[], double b[], int n);
+```
+
+The function should return `a[0] * b[0] + a[1] * b[1] + ... + a[n-1] * b[n-1]`.
+
+### **Answer:** ###
+
+```C
+    double inner_product(double a[], double b[], int n) {
+
+        double sum;
+
+        for (int i = 0; i < n; i++) {
+            
+            sum += (a[i] * b[i]);
+
+        }
+
+        return sum;
+
+    }
+```
+
+We declare a `double` variable `sum` then iterate through the arrays `n - 1` times. Each time we iterate we multiply the values of each array at the current index and add the result into `sum`. 
+
+---
+
+## Exercise 13 ##
+
+### **Question:** ###
+
+Write the following function, which evaluates a chess position:
+
+```C
+    int evaluate_position(char board[8][8]);
+```
+
+`board` represents a configuration of pieces on a chessboard, where the letters `K, Q, R, B, N, P` represent White pieces, and the letters `k, q, r, b, n, p` represent Black pieces. `evaluate_position` should sum the values of the White pieces (Q = 9, R = 5, B = 3, N = 3, P = 1). It should also sum the values of the Black pieces (done in a similar way). The function will return the difference between the two numbers. This value will be positive if White has an advantage in material and negative if Black has an advantage.
+
+### **Answer:** ###
+
+```C
+    int evaluate_position(char board[8][8]) {
+        
+        //Setup two variables to store summed values of material.
+        int white_material = 0;
+        int black_material = 0;
+
+        //Nested for loops to iterate through the 2d array.
+        for (int i = 0; i < 8; i++) {
+
+            for (int j = 0; j < 8; j++) {
+
+                //Switch statement to check char at current elements and assign values accordingly.
+                switch(board[i][j]) {
+                    case 'Q':
+                        white_material += 9;
+                        break;
+                    case 'R':
+                        white_material += 5;
+                        break;
+                    case 'N':
+                        white_material += 3;
+                        break;
+                    case 'B':
+                        white_material += 3;
+                        break;
+                    case 'P':
+                        white_material += 1;
+                        break;
+                    case 'q':
+                        black_material += 9;
+                        break;
+                    case 'r':
+                        black_material += 5;
+                        break;
+                    case 'n':
+                        black_material += 3;
+                        break;
+                    case 'b':
+                        black_material += 3;
+                        break;
+                    case 'p':
+                        black_material += 1;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+        }
+
+        //Return the difference between the material scores.
+        return (white_material - black_material);
+
+    }
+```
+
+This exercise is a bit tricky at first since we are given a sized two-dimensional array but don't let that scare you. Recall that **nested for loops** are a good way to iterate through multi-dimensional arrays in C. We use them to check every element and then use a `switch` statement to add to each side's score total based on what character is found.
+
+---
+
+## Exercise 14 ##
+
+### **Question:** ###
+
+
+
+### **Answer:** ###
