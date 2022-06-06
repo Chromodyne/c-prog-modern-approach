@@ -263,7 +263,7 @@ We can utilize **addresses (&) and pointers (*)** to gain this functionality as 
 
 ### **Question:** ###
 
-Write functions that return the following values. (Assume that `a` and `n` are parameters where `a` is an array pf `int` values and `n` is the length of the array.)
+Write functions that return the following values. (Assume that `a` and `n` are parameters where `a` is an array of `int` values and `n` is the length of the array.)
 
 ```
     (a) The largest element in a.
@@ -276,20 +276,40 @@ Write functions that return the following values. (Assume that `a` and `n` are p
 (a)
 ```C
     int Largest_Element(int a[], int n) {
-        
-        //Iterate through all elements of the array.
-        for (int i = 0; i < a[n]; i++) {
 
-            
+        int largest = 0;
+        
+        //Iterate through the array.
+        for (int i = 0; i < n; i++) {
+
+            //Check current element value. If larger than previous largest value then change largest to its value.
+            if (a[i] > largest) {
+                largest = a[i];
+            }
 
         }
+
+        return largest;
 
     }
 ```
 
 (b)
 ```C
+    //May wish to use a float/double type to prevent truncation on the returned average.
     int Array_Average(int a[], int n) {
+
+        int sum = 0;
+
+        //Iterate through all elements in a. Add the values of each element.
+        for (int i = 0; i < n; i++) {
+
+            sum += a[i];
+
+        }
+
+        //Return the average.
+        return (sum / n);
 
     }
 ```
@@ -298,7 +318,79 @@ Write functions that return the following values. (Assume that `a` and `n` are p
 ```C
     int Positive_Elements(int a[], int n) {
 
+        int posElements = 0;
+
+        //Iterate through the array.
+        for (int i = 0; i < n; i++) {
+
+            //Check if current element is positive. If it is, increment posElements.
+            if (a[i] > 0) {
+                posElements++;
+            }
+
+        }
+
+        //Return the number of postiive elements in the array.
+        return posElements;
+
     }
 ```
+
+Not much to say about these. All require iterating through the array with a `for` loop. The only one that you may wish to change is **(b)** since it will truncate the returned value if `n` doesn't divide into `sum` evenly. To fix this, make the function a `float` or `double` type and perform casts if necessary.
+
+---
+
+## Exercise 11 ##
+
+### **Question:** ###
+
+Write the following function
+
+```C
+    float compute_GPA(char grades[], int n);
+```
+
+The `grades` array will contain letter grades (A, B, C, D, or F, either upper-case or lower-case); n is the length of the array. The function should return the average of the grades (assume that A = 4, B = 3, C = 2, D = 1, and F = 0).
+
+### **Answer:** ###
+
+```C
+    float compute_GPA(char grades[], int n) {
+
+        //Used to store total grade points. Could be a float.
+        int sum = 0;
+
+        //Iterate through the array.
+        for(int i = 0; i < n; i++>) {
+
+            //Check which letter is in the current element and add to sum accordingly.
+            switch(grades[i]) {
+                case 'A':
+                    sum += 4;
+                    break;
+                case 'B':
+                    sum += 3;
+                    break;
+                case 'C':
+                    sum += 2;
+                    break;
+                case 'D':
+                    sum += 1
+                    break;
+                case 'F':
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+    //Return the average. Cast sum variable to float.
+        return ( (float) sum / (float) n);
+
+    }
+```
+
+Nothing particularly difficult. It makes good use of previous knowledge. We iterate through the array and then use a `switch` statement to check what character the current element of the array holds. We return the average. Casts to `float` for the `sum` and 'n' variables were used in the return statment. We could have changed `sum` to a `float` from the get-go; however, I decided to do it the way shown for performance reasons as calculations using integers tend be faster than those using floating-point numbers.
 
 ---
