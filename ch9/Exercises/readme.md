@@ -1,6 +1,8 @@
 Chapter 9 Exercises
 ---
 
+---
+
 ## Exercise 1 ##
 
 ### **Question:** ###
@@ -164,10 +166,83 @@ A simple function all things considered. Remember the procedure for how to deter
 
 ### **Question:** ###
 
-Suppose 
+Suppose that a function `f` has the following definition.
 
+```C
+int f(int a, int b) {...}
+```
+
+Which of the following statements are legal? (Assume that `i` has type `int` and `x` has type `double`.)
+
+```C
+    (a) i = f(83, 12);
+    (b) x = f(83, 12);
+    (c) i = f(3.15, 9.28);
+    (d) x = f(3.15, 9.28);
+    (e) f(83, 12);
+```
 
 ### **Answer:** ###
 
+The major thing to consider here is whether or not the function was prototyped or defined prior to the line it was called. If not, the default (implicit) integral (C89) or integer (C99) conversions are performed. The details on these conversions can be found on **pages 145-146**. You can also find an excellent reference [here](https://en.cppreference.com/w/c/language/conversion).
+
+Recalling the paragraphs about **Argument Conversions** on page 194, 
+
+All statements are valid if the function was prototyped or defined prior to being called; however, a breakdown of each statement follows.
+
+`(a)` is always a valid statement because the function `f` returns an integer by its type defintion; therefore, no conversion of return type is necessary. There is also no need to perform conversions on the arguments as they match the type of the declared parameters.
+
+`(b)` is only valid if the function was prototyped or defined prior to the call.
+
+`(c)` TODO
+
+`(d)` is a valid statement. TODO
+
+`(e)` is always a valid statement since it calling the `f` with the same argument types as the function definition.
 
 ---
+
+## Exercise 8 ##
+
+### **Question:** ###
+
+Which of the following would be valid prototypes for a function that returns nothing and has one `double` parameter?
+
+```C
+    (a) void f(double x);
+    (b) void f(double);
+    (c) void f(x);
+    (d) f(double x);
+```
+
+### **Answer:** ###
+
+`(a)` and `(b)` are the only valid prototypes. While omission of the parameter names is acceptable, function prototypes must contain the return type and parameter types. As such `(c)` omits the parameter type which is invalid and `(d)` omits the return type.
+
+## Exercise 9 ##
+
+### **Question:** ###
+
+What will be the output of the following program? 
+
+```C
+    #include<stdio.h>
+
+    void swap(int a, int b);
+
+    int main(void) {
+        int i = 1, j = 2;
+
+        swap(i, j);
+        printf("i = %d, j = %d\n", i, j);
+        return 0;
+    }
+
+    void swap(int a, int b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+```
+
+### **Answer:** ###
