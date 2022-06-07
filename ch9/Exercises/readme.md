@@ -509,6 +509,185 @@ This exercise is a bit tricky at first since we are given a sized two-dimensiona
 
 ### **Question:** ###
 
+The following function is supposed to return `true` if any elemement of the array `a` has the value `0` and `false` if all elements are nonzero. Sadly, it contains an error. Find the error and show how to fix it.
 
+```C
+    bool has_zero(int a[], int n) 
+    {    
+        int i;
+
+        for (i = 0; i < n; i++)
+            if (a[i] == 0)
+                return true;
+            else
+                return false;
+
+    }
+
+```
 
 ### **Answer:** ###
+
+The major issue here is that the function, in its current incarnation, will return `false` if any element is found to be nonzero. We can rectify this by moving the `return false` statement to the end of the primary function code block. This solution is valid because the `if` statement inside the `for` loop will return true immediately if any element is found to be zero during iteration. As such, if the function successfully iterates the array without returning we know that all elements contained within it are nonzero and we can return false.
+
+```C 
+    bool has_zero(int a[], int n) {
+
+        for (int i = 0; i < n; i++) {
+
+            if (i[i] == 0) {
+                return true;
+            }
+
+        }
+
+        return false;
+
+    }
+```
+
+**Note:** I modified the formatting of the function to fit my own personal style preferences. The only necessary change to fix the function is the moving of `return false` to the end of the function block.
+
+
+---
+
+## Exercise 15 ##
+
+### **Question:** ###
+
+The following (rather confusing) function finds the median of three numbers. Rewrite the function so that it has just one `return` statement.
+
+```C
+    double median(double x, double y, double z) {
+        if (x == y)
+            if (y <= z) return y;
+            else return x;
+        if (z <= y) return y;
+        if (x <= z) return x;
+        return z;
+    }
+
+```
+
+### **Answer:** ###
+
+```C
+    double median(double x, double y, double z) {
+
+        //We'll set m = x so that if no following conditions are true x will be known to be the median.
+        //This saves us an additional else if statement.
+        double m = x;
+
+        //Check conditions for median.
+        if ((x <= y && y <= z) || (z <= y && y <= x)) {
+            m = y;
+        } else if ((x <= z && z <= y) || (y <= z && z <= x)) {
+            m = z;
+        }
+
+        //Return the median of the three parameters.
+        return m;
+
+    }
+```
+
+Work through the logic of what makes a specific number a median of three numbers on paper before tackling this exercise. To save some lines of code we set `m = x` immediately at its declaration. We can do this because if `y` or `z` are not determined to be the median during the `if` statements we know that `x` must be it.
+
+Remember for a number to be a median it must the be the mid point in a set of numbers. 
+
+e.g 
+
+`For x to be the median: (y <= x <= z) OR (z <= x <= y)`
+
+---
+
+## Exercise 16 ##
+
+### **Question:** ###
+
+Condense the `fact` function in the same we condensed `power`.
+
+**Note:** The fact function can be found in **Section 9.6 page 204**.
+
+```C
+    //For reference, this is the original function provided on page 204.
+    int fact(int n) {
+        if (n <= 1) 
+            return 1;
+        else
+            return n * fact(n - 1);
+
+    }
+```
+
+### **Answer:** ###
+
+```C
+    int fact(int n) {
+
+        return (n <= 0) ? 1 : n * fact(n - 1);
+     
+    }
+```
+
+We can use the **ternary operator** `'?'` to simplify this recursive function. Recall that the **ternary operator** acts as a condensed `if else` statement.
+
+e.g.
+
+`(if this is true) ? (do this) : (if not, do this)`
+
+As you can see the `if` condition is test. If it's true then we perform the first statement after the `?`. If not we do the statement following the colon `:`.
+
+---
+
+## Exercise 17 ##
+
+### **Question:** ###
+
+Rewrite the `fact` function so that it's no longer recursive.
+
+### **Answer:** ###
+
+```C
+   int fact(int n) {
+
+    int total = n;
+
+    if (n > 0) {
+
+        for (n; n - 1 > 0; n--) {
+                total *= n - 1;
+        }
+
+    } else {
+            total = 1;
+    }
+
+     return total;
+
+}
+```
+Not exactly an elegant solution but I wanted to make it clear what we're doing here. 
+
+In order to make the function no longer recursive we have to remove the calls to itself within itself. We can do this by using a combination of a `for` loop and `if else` statements. We could also have used the ternary operator `'?'` to condense this a bit but for readability I have opted against using it.
+
+TODO: Simplify explanation.
+
+---
+
+## Exercise 18 ##
+
+### **Question:** ###
+
+Write a recursive version of the `gcd` function (See Exercise 3). Here's the strategy to use for computing `gcd(m, n)`: If `n` is 0, return `m`. Otherwise, call `gcd` recursively, passing `n` as the first argument and `m % n` as the second.
+
+### **Answer:** ###
+
+```C
+    int gcd(int m, int n) {
+        
+        return (n == 0) ? m : gcd(n, (m % n));
+
+    }
+```
+Once again we're going to use the ternary operator to simplify this function which will reduce several lines of code into a one! Remember from **Exercise 16** that the ternary operator is used as shorthand for an `if else` statement. The first expression is the condition we are testing. If it is true, the second expression (the one after the `?`) is used. If it is false, the third expression (the one after after the `:`) is used.
