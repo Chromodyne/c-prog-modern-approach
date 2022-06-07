@@ -691,3 +691,60 @@ Write a recursive version of the `gcd` function (See Exercise 3). Here's the str
     }
 ```
 Once again we're going to use the ternary operator to simplify this function which will reduce several lines of code into a one! Remember from **Exercise 16** that the ternary operator is used as shorthand for an `if else` statement. The first expression is the condition we are testing. If it is true, the second expression (the one after the `?`) is used. If it is false, the third expression (the one after after the `:`) is used.
+
+---
+
+## Exercise 19 ##
+
+### **Question:** ###
+
+Consider the following "mystery" function:
+
+```C
+    void pb(int n)
+    {
+        if (n != 0) {
+            pb(n / 2);
+            putchar('0' + n % 2); 
+        }
+
+    }
+```
+Trace the execution of the function by hand. Then write a program that calls the function, passing a number entered by the user. What does the function do?
+
+### **Answer:** ###
+
+```C
+    #include<stdio.h>
+
+    //Function Prototype
+    void pb(int n);
+
+    int main(void) {
+
+        int number;
+
+        printf("Enter a number: ");
+        scanf("%d", &number);
+
+        printf("Output: ");
+        pb(number);
+
+        return 0;
+
+    }
+
+    //Print out binary representation of input parameter.
+    void pb(int n) {
+
+        if (n != 0) {
+            pb(n / 2);
+            putchar('0' + n % 2);
+        }
+
+    }
+```
+
+I recommend writing out the function on a page first then using some test values and writing the flow chart for the recursion on the function. (Try small input numbers to reduce complexity.) 
+
+The answer is that the function prints out the binary represesentation of the number entered. 
