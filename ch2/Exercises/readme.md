@@ -1,4 +1,8 @@
-**Exercise 1**
+# Chapter 1 Exercises #
+
+## Exercise 1 ##
+
+### **Question** ##
 
 Create and run Kernighan and Ritchie's famouse "Hello, world!" program:
 
@@ -11,7 +15,11 @@ int main(void) {
 
 }
 ```
-**Answer:** The compiler spits a warning because the return statement was omitted from the main function. Simply add:
+Do you get a warning message from the compiler? IF so, what's needed to make it go away?
+
+### **Answer**  ###
+
+The compiler spits a warning because the return statement was omitted from the main function. Simply add:
 ```C
     return 0;
 ```
@@ -19,7 +27,9 @@ after the printf statement to resolve the error.
 
 ---
 
-**Exercise 2** 
+## Exercise 2 ##
+
+### **Question** ###
 
 Consider the following program:
 
@@ -40,9 +50,11 @@ Consider the following program:
 
 (b) What output does the program produce?
 
-**Answer:** 
+### **Answer(s)** ### 
 
 (a) The only directive is the `#Include<stdio.h>` whereas the statements are the declaration of `int main()` and each of the `printf` lines.
+
+(b)
 
 ```
 Parkinson's Law:
@@ -52,9 +64,18 @@ available for its completion.
     
 ---
 
-**Exercise 3**
+## Exercise 3 ##
 
-Condense the dweight.c program by (1) replacing the assignments to height, length, and width with initializers and (2) removing the weight variable, instead calculating (volume+165) / 166 within the last `printf`.
+### **Question** ###
+
+Condense the dweight.c program by 
+
+```
+    (1) replacing the assingments to height, length, and width with initializers
+    (2) removing the weight variable, instead calculating (volume + 165) / 166 within the last printf
+```
+
+### **Answer** ###
 
 ```C
     #include<stdio.h>
