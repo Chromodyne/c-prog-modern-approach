@@ -24,7 +24,7 @@ int main(void) {
 
 void pay_amount(int dollars, int * twenties, int * tens, int * fives, int * ones) {
 
-	//Always dereference your pointers using the indirection operator (*) to get the actual value stored at the address.
+	//Always dereference your pointers using the indirection operator (*) to modify the actual value stored at the address.
 	*twenties = (dollars / 20);
 	dollars -= *twenties * 20;
 	*tens = (dollars / 10);
