@@ -1,10 +1,10 @@
-# C Programming Study Notes
-### Updated: 05/17/2022
+# C Programming Study Notes #
+### Updated: 05/17/2022 ###
 
 
 ---
 
-## Definitions
+## Definitions ##
 
 **aggregate -**  capable of storing a collection of values
 
@@ -37,7 +37,7 @@
 **type -** a specifier for the type of data a variable will hold
 		e.g. int, bool, char, . . .
 
-## Escape Sequences
+## Escape Sequences ##
 
 	\n - New Line
 	\b - Backspace
