@@ -251,3 +251,77 @@ void store_zeros(int * a, int n) {
 We setup a pointer variable `p` that holds the same address as `a` so that we can make modifications to array which would not be possible if we simply used `a`. Re-read 12.3 if you are unsure of why this is the case.
 
 ---
+
+## **Exercise 9** ##
+
+### **Question** ###
+
+Write the following function:
+
+```C
+double inner_product(const double *a, const double *b, int n);
+```
+
+`a` and `b` both point to arrays of length `n`. The function should return `a[0] * b[0] + a[1] * b[1] + ... + a[n-1] * b[n-1]`. Use pointer arithmetic--not subscripting--to visit array elements.
+
+### **Answer:** ###
+
+```C
+double inner_product(const double *a, const double *b, int n) {
+
+    //Create a double variable that will store the accumulated values.
+    double final = 0.0;
+
+    //Let's create two pointer variables to copy the array pointers into.
+    double * p = a, * q = b;
+
+    //We only need to conditionally loop through the array using one of the arrays since they are both presumed to have the same length and they will both be incremented on each successful loop so their indices should remain the same.
+    while(p < a + n) {
+
+        //Because of how the postscript increment side-effects work we can add the values of each element together.
+        final += *p++ * *q++;
+
+    }
+
+    return final;
+
+}
+```
+This can be a bit confusing at first blush. The crux of the issue to make sure you understand how combinations of the indirection (`*`) and increment (`++`) operators behave. Simply put, when we use `*p++` and `*q++`, for example, the multiplication will be using the current values of `*p` and `*q` respectively. It is only after this operation that the incrementing of `p` and `q` will take place. The latter part of **Section 12.2** explains this in great detail. Reread this as many times as necessary to absorb it.
+
+---
+
+## **Exercise 10** ##
+
+### **Question** ###
+
+Modify the `find_middle` function of **Section 11.5** so that it uses pointer arithmetic to calculate a return value.   
+
+### **Answer:** ###
+
+```C
+int *find_middle(int * a, int n) {
+
+    //Create a copy of the a array pointer as p.
+    int * p = a;
+
+    //Use pointer arithmetic to find the middle of the array.
+    return p + (n / 2);
+
+}
+```
+This exercise is rather simple if you understand the basics of how pointer arithmetic works. Creating the pointer `p` and giving the address of `a` we know that it now is set at `&a[0]`. If we divide the number of elements in the array by 2 and add that to `p` we will get the element at the middle of the array. However, if our array stores an even number of integers we will get the higher of the two middle values.
+
+**e.g.** If the array being passed in to the function is `int a[6] = {1, 2, 3, 4, 5, 6};` we will get `4` as our return value.
+
+---
+
+## **Exercise 11** ##
+
+### **Question** ###
+
+
+### **Answer:** ###
+
+
+---
