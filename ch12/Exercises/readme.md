@@ -143,9 +143,111 @@ Suppose that `a` is a one-dimensional array and `p` is a pointer variable. Assum
 
 ### **Question** ###
 
+Rewrite the following function to use pointer arithmetic instead of array subscripting. (In other words, eliminate the variable `i` and all uses of the `[]` operator.) Make as few changes as possible.
 
+```C
+int sum_array(const int a[], int n) {
+
+    int i, sum;
+
+    for (i = 0; i < n; i++) {
+        sum += a[i];
+    }
+
+    return sum;
+
+}
+```
 
 ### **Answer:** ###
 
+Recall that array parameters can be declared as a pointer since the compiler treats it as if it was identical to declaring it as an array.
+
+```C
+int sum_array(int * a, int n) {
+    
+    int sum = 0;
+    int * p;
+
+    for (p = a; p < a; p++) {
+        sum += *p;
+    }
+
+    return sum;
+
+}
+```
+
+---
+
+## **Exercise 7** ##
+
+### **Question** ###
+
+Write the following function:
+
+```C
+bool search(const int a[], int n, int key);
+```
+`a` is an array to be searched, `n` is the number of elements in the array, and `key` is the search key. `search` should return `true` if `key` matches some elements of `a`, and `false` if it doesn't. Use pointer arithmetic--not subscripting--to visit array elements.
+
+### **Answer:** ###
+
+```C
+bool search(const int a[], int n, int key) {
+
+    //Defining p as a pointer.
+    int * p;
+
+    //Setup a boolean variable for us to return later for determining if a match is found. Defaults to false. Requires stdbool.h.
+    bool match_found = false;
+
+    //Setting p = a to set p = &a[0] before iterating through the array with pointer arithmetic.
+    for (p = a; p < a + n; p++) {
+
+        //Compare key value to the value of the current array element. If a match is found, set match_found to true.
+        match_found = *p == key; 
+    }
+
+    return match_found;
+
+}
+```
+Remember: We can use the array name alone as a pointer. (`a` in this case.) We can either use it alone for pointer arithmetic which will disallow us from incrementing `a`; therefore, we can declare a secondary pointer variable and copy `a` into it(`p`  in this case) to use for operations. Reread **Section 12.3** if you need review.
+
+---
+
+## **Exercise 8** ##
+
+### **Question** ###
+
+Rewrite the following function to use pointer arithmetic instead of array subscripting. (In other words, eliminate the variable `i` and all uses of the `[]` operator.) Make as few changes as possible.
+
+```C
+void store_zeros(int a[], int n) {
+    
+    int i;
+
+    for (i = 0; i < n; i++) {
+        a[i] = 0;
+    }
+
+}
+```
+
+### **Answer:** ###
+
+```C
+void store_zeros(int * a, int n) {
+
+    int * p;
+
+    for(p = a; p < a + n; p++) {
+        *p = 0;
+    }
+
+}
+```
+We setup a pointer variable `p` that holds the same address as `a` so that we can make modifications to array which would not be possible if we simply used `a`. Re-read 12.3 if you are unsure of why this is the case.
 
 ---
