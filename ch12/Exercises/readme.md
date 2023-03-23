@@ -305,7 +305,7 @@ int *find_middle(int * a, int n) {
     //Create a copy of the a array pointer as p.
     int * p = a;
 
-    //Use pointer arithmetic to find the middle of the array.
+    //Use pointer arithmetic to return the middle of the array.
     return p + (n / 2);
 
 }
@@ -320,8 +320,151 @@ This exercise is rather simple if you understand the basics of how pointer arith
 
 ### **Question** ###
 
+Modify the `find_largest` function so that it uses pointer arithmetic--not subscripting--to visit array elements.
 
 ### **Answer:** ###
+
+```C
+int find_largest(int a[], int n) {
+    
+    int * p, max;
+    p = a;
+
+    max = *p;
+
+    while (p < a + n) {
+    
+        if (*p > max) {
+
+            max = *p++;
+        
+        }
+        
+    }
+    
+    return max;
+
+}
+```
+
+As with the previous exercise we must understand how combinations of the indirection (`*`) and the increment (`++`) work in order to tackle this exercise.
+
+---
+
+## **Exercise 12** ##
+
+### **Question** ###
+
+Write the following function:
+
+```C
+void find_two_largest(const int *a, int n, int *largest, int *second_largest);
+```
+`a` points to an array of length `n`. The function searches the array for its largest and second largest elements, storing them in the variables poined to by `largest` and `second_largest`, respectively. Use pointer arithmetic--not subscripting--to visit the elements.
+
+### **Answer:** ###
+
+```C
+void find_two_largest(const int *a, int n, int *largest, int *second_largest) {
+
+    int * p = a;
+
+    *largest = *p;
+    *second_largest = *p;
+
+    while (p++ < a + n) {
+
+        if (*p > *largest) {
+
+            *second_largest = *largest;
+            *largest = *p;
+
+        } else if (*p > *second_largest) {
+
+            *second_largest = *p;
+
+        }
+
+    }
+
+}
+
+```
+
+---
+
+## **Exercise 13** ##
+
+### **Question** ###
+
+**Section 8.2** had a program fragment in which two nested `for` loops initialized the array `ident` for use as an identity matrix. Rewrite this code, using a single pointer to step through the array one element at a time. *Hint:* Since we won't be using `row` and `col` index variables, it won't be easy to tell where to store 1. Instead we can use the fact that the first element of the array should be 1, the next `N` elements should be 0, the next element should 1, and so forth. Use a variable to keep track of how many consecutive 0s have been stored; when the count reaches `N`, it's time to store 1.
+
+### **Answer:** ###
+
+**TODO**: This answer is incomplete.
+
+```C
+#define N 10
+
+double ident[N][N];
+int row, col;
+
+for (row = 0; row < N; row++) {
+
+}
+```
+
+---
+
+## **Exercise 14** ##
+
+### **Question** ###
+
+Assume that the following array contains a week's worth of hourly temperature readings, with each row containing the readings for one day:
+
+```C
+int temperatures[7][24];
+```
+Write a statement that uses the `search` function (see **Exercise 7**) to search the entire `temperatures` array for the value `32`.
+
+### **Answer:** ###
+
+```C
+bool search_for_32 = search(temperatures, 7 * 24, 32);
+```
+We need to pass in the array to the search function as the first argument. Since the second argument wants to know the total number of elements we must multiply the number of rows by the number of columns which are `7` and `24` respectively in this case. For our final argument we are passing in the search key (what we are looking for in the array) which in this case is `32`.
+
+---
+
+## **Exercise 15** ##
+
+### **Question** ###
+
+Write a loop that prints all temperature readings stored in row `i` of the `temperatures` array (see **Exercise 14**). Use a pointer to visit each element in the row.
+
+### **Answer:** ###
+
+```C
+int i, *p;
+
+for (p = a[i]; p < a[i] + 24; p++) {
+    
+    printf("%d", *p);
+
+}
+```
+This can be quite complicated at first glance. Remember that our `search` function is expecting a 1-dimensional array as an argument. The expression `a[i]` is a pointer to the first element of row `i`. This is explained in **Section 12.4** in the subsection named: **Processing the Rows of a Multidimensional Array**.
+
+---
+
+## **Exercise 16** ##
+
+### **Question** ###
+
+Write a loop that prints the highest temperature in the `temperatures` array (see **Exercise 14**) for each day of the week. The loop body should call the `find_largest` function, passing it one row of the array at a time.
+
+### **Answer:** ###
+
 
 
 ---
