@@ -194,3 +194,75 @@ Complex add_complex(Complex a, Complex b) {
 ```
 
 ---
+
+## Exercise 5 ##
+
+### **Question** ##
+
+Write the following functions, assuming that the `date` structure contains three members: `month`, `day`, and `year` (all of type `int`).
+
+(a)
+```C
+int day_of_year(struct date d);
+```
+Returns the day of the year (an integer between `1` and `366`) that corresponds to the date `d`.
+
+(b)
+```C
+int compare_dates(struct date d1, struct date d2);
+```
+Returns `-1` if `d1` is an earlier date than `d2`, `+1` if `d1` is a later date than `d2`, and `0` if `d1` and `d2` are the same.
+
+### **Answer**  ###
+
+(a)
+```C
+int day_of_year(struct date d) {
+
+    int cumulative = 0;
+    int daysPerMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    //Check if leap year.
+    if ((d.year % 4 == 0 || d.year % 400 == 0) && d.year % 100 != 0) {
+
+        //Add a day to february if leap year.
+        daysPerMonth[1] = 29;
+
+    }
+
+    //Iterate through the daysPerMonth array to get the cumulative number of days elapsed
+    //until the current month. Be careful with conditional to make sure we don't count
+    //the current month as a full month.
+    for (int i = 0; i < d.month - 1; i++) {
+        cumulative += daysPerMonth[i];
+    }
+
+    //Add the days of the current month.
+    cumulative += d.day;
+
+    return cumulative;
+
+}
+```
+(b)
+```C
+int compare_dates(struct date d1, struct date d2) {
+
+    //Get the cumulative number of elapsed days for each parameter using the previous
+    //function we created.
+    int days1 = day_of_year(d1);
+    int days2 = day_of_year(d2);
+
+    //Compare the current day number and return values based on condition.
+    if (days1 > days2) {
+        return -1;
+    } else if (days2 > days1) {
+        return 1;
+    } else {
+        return 0;
+    }
+
+}
+```
+
+---
