@@ -73,3 +73,124 @@ c3.imaginary = c1.imaginary + c2.imaginary;
 ```
 
 ---
+
+## Exercise 3 ##
+
+### **Question** ##
+
+(a) Show how to declare a tag named `complex` for a structure with two members, `real` and `imaginary`, of type `double`.
+
+(b) Use the `complex` tag to declare variables named `c1`, `c2`, and `c3`.
+
+(c) Write a function named `make_complex` that stores its two arguments (both of type `double`) in a `complex` structure, then returns the structure.
+
+(d) Write a function named `add_complex` that adds the corresponding members of its arguments (both `complex` structures), then returns the result (another `complex` structure).
+
+### **Answer**  ###
+
+(a)
+
+```C
+struct complex {
+    double real, imaginary;
+}
+```
+Remember that a **tag** is simply a name used to identify a particular kind of structure. See **Section 16.2**.
+
+(b)
+
+```C
+struct complex c1, c2, c3;
+```
+Do not make the mistake of omitting the `struct` before using the tag `complex`.
+
+e.g. 
+```C
+complex c1, c2, c3      /*---WRONG---*/
+```
+(c)
+
+```C
+struct make_complex(double real, double imaginary) {
+
+    struct complex c;
+
+    c.real = real;
+    c.imaginary = imaginary;
+
+    return c;
+
+}
+```
+Notice that this function is awfully similar to object constructors in object-oriented languages.
+
+(d)
+
+```C
+struct add_complex(struct complex a, struct complex b) {
+
+    struct complex c;
+
+    c.real = a.real + b.real;
+    c.imaginary = a.imaginary + b.imaginary;
+
+    return c;
+
+}
+```
+
+---
+
+## Exercise 4 ##
+
+### **Question** ##
+
+Repeat **Exercise 3**, but this time using a *type* named `Complex`.
+
+### **Answer**  ###
+
+(a)
+
+```C
+typedef struct {
+    double real, imaginary;
+} Complex;
+```
+(b)
+
+```C
+Complex c1, c2, c3;
+```
+Notice how now that `Complex` is defined as a `type` we can use it without `struct` beforehand. Indeed, we **MUST** omit the `struct` part since `Complex` is now a defined type. 
+
+(c)
+
+```C
+Complex make_complex(double real, double imaginary) {
+
+    Complex c;
+
+    c.imaginary = imaginary;
+    c.real = real;
+
+    return c;
+
+}
+```
+
+(d)
+
+```C
+Complex add_complex(Complex a, Complex b) {
+
+    Complex c;
+
+    c.real = a.real + b.real;
+    c.imaginary = a.imaginary + b.imaginary;
+
+    return c;
+
+}
+```
+
+---
