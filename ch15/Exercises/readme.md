@@ -150,10 +150,24 @@ f2.o: f2.c f1.h f2.h
 
 ### **Question** ##
 
+The following questions refer to the program described in **Exercise 5**.
 
+(a) Which files need to be compiled when the program is built for the first time?
+
+(b) If `f1.c` is changed after the program has been built, which files need to be compiled?
+
+(c) If `f1.h` is changed after the program has been built, which files need to be compiled?
+
+(d) If `f2.h` is changed after the program has been built, which files need to be compiled?
 
 ### **Answer**  ###
 
+(a) `main.c`, `f1.c`, and `f2.c` all must be compiled when the program is built for the first time.
 
+(b) Only `f1.c` will need to be compiled.
+
+(c) `main.c`, `f1.c`, and `f2.c` all must be compiled because they all include `f1.h`.
+
+(d) `f1.c` and `f2.c` will need to be compiled since they both include `f2.h`.
 
 ---
