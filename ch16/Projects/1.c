@@ -26,6 +26,8 @@ int main(void) {
         {"United States", 1}, {"Vietnam", 84}
     };
 
+    //The first variable will store the code entered by the user. The second is used for the ending conditional
+    //to print an error message if the code entered by the user does not exist in the structure.
     int code_entered;
     bool code_exists = false;
 
@@ -33,13 +35,23 @@ int main(void) {
     printf("Please enter an international dialing code: ");
     scanf("%3d", &code_entered);
 
+    //Iterate through the structure array.
     for (int i = 0; i < sizeof(country_code) / sizeof(country_code[0]); i++) {
+
+        //Check to see if the current country code at the current index matches the one entered by the user.
         if (country_code[i].code == code_entered) {
+
+            //Print the name of the country at that index if the code matches the one entered by the user.
             printf("The country listed under that code is: %s", country_code[i].country);
+
+            //Set to true so that the error code for a missing country code is skipped.
             code_exists = true;
         }
+
     }
 
+    //If the code entered by the user is not found in the previous loop, code_exists will be false and this
+    //message will be printed.
     if (!code_exists) {
         printf("The international dialing code entered does not exist.");
     }
