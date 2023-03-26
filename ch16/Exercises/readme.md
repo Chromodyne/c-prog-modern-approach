@@ -264,5 +264,103 @@ int compare_dates(struct date d1, struct date d2) {
 
 }
 ```
+---
 
+## Exercise 6 ##
+
+### **Question** ##
+
+Write the following function, assuming that the `time` structure contains three members: `hours`, `minutes`, and `seconds` (all of type `int`).
+
+```C
+struct time split_time(long total_seconds);
+```
+`total_seconds` is a time represented as the number of seconds since midnight. The function returns a structure containing the equivalent time in hours (0-23), minutes (0-59), amd seconds (0-59).
+
+### **Answer**  ###
+
+```C
+struct time split_time(long total_seconds) {
+
+    struct {
+        int hours, minutes, seconds
+    } t
+
+    long remaining_seconds = total_seconds;
+
+    t.hours = (remaining_seconds / 3600);
+    remaining_seconds -= remaining_seconds / 3600;
+    t.minutes = remaining_seconds / 60;
+    remaining_seconds -= remaining_seconds / 60
+    t.seconds = remaining_seconds
+
+    return t;
+
+}
+```
+
+---
+
+## Exercise 7 ##
+
+### **Question** ##
+
+Assume that the `fraction` structure contains two members: `numerator` and `denominator` (both of type `int`). Write functions that perform the following operations:
+
+(a) Reduce the fraction `f` to lowest terms. *Hint:* To reduce a fraction to lowest terms, first compute the greatest common divisor (GCD) of the numerator and denominator. Then divide both the numerator and the denominator by the GCD.
+
+(b) Add the fractions `f1` and `f2`.
+
+(c) Subtract the fraction `f2` from the fraction `f1`.
+
+(d) Multiply the fractions `f1` and `f2`. 
+
+(e) Divide the fraction `f1` by the fraction `f2`.
+
+The fractions `f1`, `f1`, and `f2` will be arguments of type `struct fraction`. The fractions returned by the functions in parts (b)-(e) should be reduced to lowest terms. *Hint:* You may use the function from part (a) to help write the functions in parts (b)-(e).
+
+### **Answer**  ###
+
+**TODO:** ANSWER INCOMPLETE. RETURN LATER.
+
+For these answers I will be assuming that there is neither a type nor a tag for the `fraction` structure.
+
+(a)
+```C
+struct reduce_fraction (struct fraction f) {
+
+    struct {
+        int numerator;
+        int denominator;
+    } reduced;
+
+    int gcd;
+
+    //Let's find the GCD.
+    for (int i = 1; i <= f.numerator && i <= f.denominator; i++) {
+        if (f.numerator % i == 0 && f.denominator % i == 0) {
+            gcd = i;
+        }
+    }
+
+    reduced.numerator = f.numerator / gcd;
+    reduced.denominator = f.denominator / gcd;
+
+    return reduced;
+
+}
+```
+
+(b)
+```C
+struct add_two_fractions(struct fraction f1, struct fraction f2) {
+
+    struct {
+        int numerator, denominator;
+    } added;
+
+
+
+}
+```
 ---
