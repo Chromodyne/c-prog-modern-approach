@@ -94,24 +94,26 @@ int * create_array(int n, int initial_value) {
     //can vary by machine.
     arp = malloc(n * sizeof(int));
 
-    //Initialize the array. Remember that we can ignore the fact that arp is a pointer and use it as an array name
-    //once it points to a dynamically allocated block of memory. See Section 17.3 under the subsection concerning
-    //using malloc for dynamically allocated arrays for more information on why this is possible.
-    for(int i = 0; i < n; i++) {
-        arp[i] = initial_value;
-    }
-
     //Same as previous exercise.
     if (arp == NULL) {
+
         printf("Null pointer returned during allocation of new array.");
         return NULL;
+
     } else {
+
+        //Initialize the array. Remember that we can ignore the fact that arp is a pointer and use it as an array name
+        //once it points to a dynamically allocated block of memory. See Section 17.3 under the subsection concerning
+        //using malloc for dynamically allocated arrays for more information on why this is possible.
+        for(int i = 0; i < n; i++) {
+            arp[i] = initial_value;
+        }
+
         return arp;
     }
 
 }
 ```
-
 ---
 
 ## Exercise 4 ##
@@ -131,6 +133,12 @@ Assume that we want `p` to point to a `rectangle` structure whose upper-left cor
 ### **Answer**  ###
 
 ```C
+p  = malloc(sizeof(struct rectangle));
+
+p->upper_left.x = 10;
+p->upper_left.y = 25;
+p->lower_right.x = 20;
+p->lower_right.y = 15; 
 ```
 
 ---
