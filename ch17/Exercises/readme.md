@@ -148,5 +148,7 @@ e.g.
 
 **Structure Pointer** `p->upper_left.x = ...`
 
+Since we're dealing with a pointer due to the use of `malloc` we should use arrow notation.
+
 
 ---
