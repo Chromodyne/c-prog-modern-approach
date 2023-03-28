@@ -140,5 +140,13 @@ p->upper_left.y = 25;
 p->lower_right.x = 20;
 p->lower_right.y = 15; 
 ```
+Remember that arrow notation (`->`) is used to access members of structure through a pointer whereas dot notation (`.`) is used to access members of the structure directly.
+
+e.g. 
+
+**Structure** `p.upper_left.x = ...`
+
+**Structure Pointer** `p->upper_left.x = ...`
+
 
 ---
