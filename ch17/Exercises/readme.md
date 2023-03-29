@@ -193,3 +193,77 @@ The former is illegal because we are attempting to reference the `b` member of `
 The latter is illegal because we are attempting to use arrow notation to reference the `c` member of `d` when we should be using dot notation. e.g. `p->d.c = 20;`
 
 ---
+
+## Exercise 6 ##
+
+### **Question** ##
+
+Modify the `delete_from_list` function so that it uses only one pointer variable instead of two (`cur` and `prev`).
+
+### **Answer**  ###
+
+**TODO**: This exercise is incomplete.
+
+```C
+struct node *delete_from_list(struct node *list, int n) {
+    
+    struct node *cur, *prev;
+
+    for (cur = list, prev = NULL;
+         cur != NULL && cur->value != n;
+         prev = cur, cur = cur->next) {
+            if (cur == NULL) {
+                return list;
+            }
+            if (prev == NULL) {
+                list = list->next;
+            } else {
+                prev->next = cur->next;
+            }
+         }
+
+         free(cur);
+         return list;
+}
+```
+---
+
+## Exercise 7 ##
+
+### **Question** ##
+
+The following loop is supposed all nodes from a linked list and release the memory that they occupy. Unfortunately, the loop is incorrect. Explain what's wrong with it and show how to fix the bug.
+
+```C
+for (p = first; p != NULL; p = p->next)
+    free(p);
+```
+
+### **Answer**  ###
+
+
+
+---
+
+## Exercise 8 ##
+
+### **Question** ##
+
+
+
+### **Answer**  ###
+
+
+---
+
+## Exercise 9 ##
+
+### **Question** ##
+
+True or false: If `x` is a structure and `a` is a member of that structure, then `(&x)->a` is the same as `x.a`. Justify your answer.
+
+### **Answer**  ###
+
+**True**. The **right arrow selection** operator (`->`) is a combination of the indirection (`*`) and dot (`.`) operators. It follows that `(&x)->a` expands to `*(&x).a`. Seeing that `*` and `&` are essentially inverses of one another the final statement would be `x->a` which is valid. A special note that is the order of precedence is only valid here because of the parentheses surrounding `&x` in the example. Without these parentheses the statement would not work as expected. This is due to the fact that `->` has a higher precedence than `&`. More can be found on this [here.](https://en.cppreference.com/w/c/language/operator_precedence)
+
+---
