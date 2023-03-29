@@ -264,6 +264,6 @@ True or false: If `x` is a structure and `a` is a member of that structure, then
 
 ### **Answer**  ###
 
-**True**. The **right arrow selection** operator (`->`) is a combination of the indirection (`*`) and dot (`.`) operators. It follows that `(&x)->a` expands to `*(&x).a`. Seeing that `*` and `&` are essentially inverses of one another the final statement would be `x->a` which is valid. A special note that is the order of precedence is only valid here because of the parentheses surrounding `&x` in the example. Without these parentheses the statement would not work as expected. This is due to the fact that `->` has a higher precedence than `&`. More can be found on this [here.](https://en.cppreference.com/w/c/language/operator_precedence)
+**True**. The **right arrow selection** operator (`->`) is a combination of the indirection (`*`) and dot (`.`) operators. It follows that `(&x)->a` expands to `*(&x).a`. Seeing that `*` and `&` are essentially inverses of one another the final statement would be `x->a` which is valid. A special note is that the order of precedence is only valid here because of the parentheses surrounding `&x` in the example. Without these parentheses the statement would not work as expected. This is due to the fact that `->` has a higher precedence than `&`. More can be found on this [here.](https://en.cppreference.com/w/c/language/operator_precedence)
 
 ---
