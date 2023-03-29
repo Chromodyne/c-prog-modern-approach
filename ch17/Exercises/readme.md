@@ -152,3 +152,44 @@ Since we're dealing with a pointer due to the use of `malloc` we should use arro
 
 
 ---
+
+## Exercise 5 ##
+
+### **Question** ##
+
+Suppose that `f` and `p` are declared as follows:
+
+```C
+struct {
+    union {
+        char a, b;
+        int c;
+    } d;
+    int e[5];
+} f, *p = &f;
+```
+
+Which of the following statements are legal?
+
+```
+(a) p->b = ' ';
+(b) p->e[3] = 10
+(c) (*p).d.a = '*';
+(d) p->d->c = 20;
+```
+
+### **Answer**  ###
+
+(b) and (c) are legal statements. 
+
+The former is legal because `e` is a member of `f` and since `p` is a pointer to `f` we are using arrow notation as we should to access the member of a structure pointer. 
+
+The latter is legal because by using the indirection operator (`*`) on `p` we are dereferencing it and are essentially acting on the structure itself. This means using dot notation to access members is correct.
+
+(a) and (d) are illegal statements.
+
+The former is illegal because we are attempting to reference the `b` member of `d` without actually stating it. e.g. `p->d.b = ' ';`
+
+The latter is illegal because we are attempting to use arrow notation to reference the `c` member of `d` when we should be using dot notation. e.g. `p->d.c = 20;`
+
+---
