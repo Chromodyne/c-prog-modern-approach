@@ -137,7 +137,7 @@ p  = malloc(sizeof(struct rectangle));
 
 p->upper_left.x = 10;
 p->upper_left.y = 25;
-p->lower_right.x = 20;
+p->lower_right.x = 20;cd
 p->lower_right.y = 15; 
 ```
 Remember that arrow notation (`->`) is used to access members of structure through a pointer whereas dot notation (`.`) is used to access members of the structure directly.

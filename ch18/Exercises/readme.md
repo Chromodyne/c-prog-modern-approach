@@ -193,7 +193,7 @@ Write a complete description of the type of `x` as specified by each of the foll
 `x` is a function that returns a pointer to an array of five `int`s.
 
 (c)
-
+ 
 
 
 ---
