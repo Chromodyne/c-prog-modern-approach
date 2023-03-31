@@ -160,10 +160,40 @@ Suppose that we declare `x` to be a `const` object. Which one the following stat
 
 (c) `x` is subject to the same scope rules as variables.
 
-(d) `x` can be of any type.
+(d) `x` can be of any type.                              
 
 ### **Answer**  ###
 
 `(a)` is false. Declaring an object as `const` simply sets it to be `read only`. It does not make it usable as a constant expression which the `switch` statement requires.
+
+---
+
+## Exercise 8 ##
+
+### **Question** ##
+      
+Write a complete description of the type of `x` as specified by each of the following declarations.
+
+(a) `char (*x[10]) (int);`
+
+(b) `int (*x(int)) [5];`
+
+(c) `float *(*x(void)) (int);`
+
+(d) `void (*x(int, void (*y) (int))) (int);`
+
+### **Answer**  ###
+
+(a)
+
+`x` is an array of 10 pointers to functions that require `int` arguments and return a `char`.
+
+(b)
+
+`x` is a function that returns a pointer to an array of five `int`s.
+
+(c)
+
+
 
 ---
