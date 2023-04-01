@@ -175,7 +175,7 @@ while (i >= 0) {
 }
 ```
 
-Here is the `continue` statement performing the same function.
+Here is the `goto` statement performing the same function.
 
 ```C
 int i = 10;
