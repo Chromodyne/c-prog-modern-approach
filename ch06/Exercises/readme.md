@@ -183,7 +183,7 @@ int i = 10;
 while (i >= 0) {
 
     if (i == 5) {
-        goto end   //Jumps to the end of this loop iteration but remains within the loop.
+        goto end;   //Jumps to the label which is at the end of the loop.
     }
 
     printf("%d ", i);
