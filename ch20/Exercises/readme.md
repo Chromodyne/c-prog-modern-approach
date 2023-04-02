@@ -30,6 +30,8 @@ printf("%d", i ^ j & k);
 
 ### **Answer**  ###
 
+**Note:** For (b), (c), and (d) of the following answers I have included the binary steps through the process. While the exercises state we are using an `unsigned short` for each variable, which is typically 16-bits, I have I have opted to limit the binary math to 8-bits to keep things terse. With the values provided for the variables in the exercises the logic works out the exact same.
+
 (a) Addition (`+`) has a higher precedence than bitwise shifting. Therefore the expression being evaluated is `i >> (1 + j) >> 1`. Therefore our output is `0` because bitshifting right by `10` and again by `1` leaves us with `0b00000000` since the set bits do not underflow.
 
 (b) Remember that the complement operator (`~`) has higher precedence than the bitwise AND (`&`). `i` is originally set to `0b00000001` by taking the complement we change it to `0b11111110`. Therefore `i & ~i` gives us `0`. See below.
@@ -47,23 +49,57 @@ printf("%d", i ^ j & k);
 
 ```
 0b00000010 ~
-----------
+------------
 0b11111101
 0b00000001 &
-----------
+------------
 0b00000001 FINAL = 1
 ```
-(d) `&` has higher precedence than `^` so we have `i ^ j & k`. Which gives us `15`
+(d) `&` has higher precedence than `^` so we have `i ^ (j & k)`. Which gives us `15`
 ```
 0b00001000
 0b00001001 &
 ------------
 0b00001000
 0b00000111 ^
------------
+------------
 0b00001111 FINAL = 15
 ```
+---
 
+## Exercise 2 ##
 
+### **Question** ##
+
+Describe a simple way to "toggle" a bit (change it from `0` to `1` or from `1` to `0`). Illustrate the technique by writing a statement that toggles bit 4 of the variable `i`.
+
+### **Answer**  ###
+
+We can easily toggle a bit to be a 1 by performing an OR (`|`) with a mask that contains a 1 bit in our desired location (In this case, bit 4.)
+
+**Note:** I will be using a `uint8_t` which stores up to 8 bits for brevity.
+
+```C
+uint8_t i = 0x00;      //0b00000000
+i |= 0x10;           //0x10 is our mask
+```
+```
+0b00000000
+0b00010000 |
+------------
+0b00010000 FINAL (i)
+```
+To toggle a bit to be a 0 (clearing it) we can perform an AND (`&`) operation with a mask that has a 0 bit in the desired position. 
+
+```C
+uint8_t i= 0x13;
+i &= 0x03;
+```
+```
+0b00010011
+0b00000011 &
+----------
+0b00000011 FINAL (i)
+```
 
 ---
