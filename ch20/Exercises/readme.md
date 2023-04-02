@@ -75,7 +75,7 @@ Describe a simple way to "toggle" a bit (change it from `0` to `1` or from `1` t
 
 ### **Answer**  ###
 
-We can easily toggle a bit to be a 1 by performing an OR (`|`) with a mask that contains a 1 bit in our desired location (In this case, bit 4.)
+We can easily set a bit to be a 1 by performing an OR (`|`) with a mask that contains a 1 bit in our desired location (In this case, bit 4.)
 
 **Note:** I will be using a `uint8_t` which stores up to 8 bits for brevity.
 
@@ -89,7 +89,7 @@ i |= 0x10;           //0x10 is our mask
 ------------
 0b00010000 FINAL (i)
 ```
-To toggle a bit to be a 0 (clearing it) we can perform an AND (`&`) operation with a mask that has a 0 bit in the desired position. 
+To set a bit to be a 0 (clearing it) we can perform an AND (`&`) operation with a mask that has a 0 bit in the desired position. 
 
 ```C
 uint8_t i= 0x13;
@@ -101,7 +101,32 @@ i &= 0x03;
 ----------
 0b00000011 FINAL (i)
 ```
+We can also make a more general statement that toggles a bit (flips a bit regardless of if it is 1 or 0) by using an XOR (`^`) with a mask that has 1 bit set in the desired position.
 
+```C
+//This example has our 4th bit set to 1 but we want it to be set to 0
+uint8_t i = 0x10;
+i ^= 0x13;
+```
+```
+0b00010000
+0b00010011 ^
+------------
+0b00000011 FINAL (i)
+```
+Or
+
+```C
+//This example has our 4th bit initially set to 0 but we want it to be set to 1
+uint8_t i = 0x03;
+i ^= 0x10;
+```
+```
+0b00000011
+0b00010000 ^
+------------
+0b00010011 FINAL (i)
+```
 ---
 
 ## Exercise 3 ##
@@ -137,5 +162,23 @@ For example, let `x = 0x0D` and `y = 0x0B`. In binary these have the values `0b0
 ```
 
 Notice how the `x` and `y` values have swapped places at the end.
+
+---
+
+## Exercise 4 ##
+
+### **Question** ##
+
+In computer graphics, colors are often stored as three numbers, representing red, green, and blue intensities. Suppose that each number requires eight bits, and we'd like to store all three values in a single long integer. Write a macro named `MK_COLOR` with three parameters (the red, green, and blue intensities). `MK_COLOR` should return a `long` in which the last three bytes contain the red, green, and blue intensities, with the red value as the last byte and the green value as the next-to-last byte.
+
+### **Answer**  ###
+
+Assuming the required bits are already clear and that by "last byte" we mean the one furthest left of the others we can derive the following macro.
+
+```C
+//Remember to typecast the result to a long
+#define MK_COLOR(r, g, b) ((long) (r) << 16 | (g) << 8 | (b))
+```
+If instead by "last byte" the opposite order is intended we can simply change the positions of `r` and `b` in the macro.
 
 ---
