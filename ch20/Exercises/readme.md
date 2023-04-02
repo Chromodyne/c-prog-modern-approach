@@ -38,10 +38,10 @@ printf("%d", i ^ j & k);
 
 ```
 0b00000001 ~
-----------
+------------
 0b11111110
 0b00000001 &
-----------
+------------
 0b00000000 FINAL = 0
 ```
 
@@ -101,5 +101,41 @@ i &= 0x03;
 ----------
 0b00000011 FINAL (i)
 ```
+
+---
+
+## Exercise 3 ##
+
+### **Question** ##
+
+Explain what effect the following macro has on its arguments. You may assume that the arguments have the same type.
+
+```C
+#define M(x,y) ((x) ^= (y), (y) ^= (x), (x) ^= (y))
+```
+
+### **Answer**  ###
+
+This macro will swap the values stored in the `x` and `y` parameters.
+
+For example, let `x = 0x0D` and `y = 0x0B`. In binary these have the values `0b00001101` and `0b00001011` respectively. We can follow what happens below.
+
+```
+0b00001101          x       = 0x0D
+0b00001011 ^        y       = 0x0B
+------------
+0b00000110          x (new) = 0x06
+0b00001011 ^        y       = 0x0B
+------------
+0b00001101          y (new) = 0x0D
+0b00000110 ^        x       = 0x06
+------------
+0b00001011          x (new) = 0x0B
+
+0b00001011          x FINAL = 0x0B
+0b00001101          y FINAL = 0x0D
+```
+
+Notice how the `x` and `y` values have swapped places at the end.
 
 ---
