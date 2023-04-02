@@ -218,5 +218,70 @@ Recall from **Exercise 4**, I assumed by "last byte" they meant the highest byte
 ```
 Because bitshifting has a higher order of precedence than bitwise ANDing we do not need parentheses around the bitshift in our macro.
 
+---
+
+## Exercise 5 ##
+
+### **Question** ##
+
+(a) Use the bitwise operators to write the following function:
+
+```C
+unsigned short swap_bytes(unsigned short i);
+```
+`swap_bytes` should return the number that results from swapping the two bytes in `i`. (Short integers occupy two bytes on most computers.) For example, if `i` has the value `0x1234` (00010010 00110100 in binary), then `swap_bytes` should return `0x3412` (00110100 00010010 in binary). Test your function by writing a program that reads a number in hexadecimal, then writes the number with its bytes swapped.
+
+`Enter a hexadecimal number (up to four digits): 1234`
+
+`Number with bytes swapped: 3412`
+
+*Hint:* Use the `%hx` conversion to read and write the hex numbers.
+
+(b) Condense the `swap_bytes` function so that its body is a single statement.
+
+
+### **Answer**  ###
+
+(a)
+
+```C
+#include<stdio.h>
+
+unsigned short swap_bytes(unsigned short i);
+
+int main(void) {
+
+    unsigned short entered;
+    
+    printf("Enter a hexadecimal number (up to four digits): ");
+    scanf("%4hx", &entered);
+
+    printf("Your number: 0x%hx", swap_bytes(entered));
+
+    return 0;
+
+}
+
+unsigned short swap_bytes(unsigned short i) {
+
+    //Use variables to store the high and low parts of i by shifting.
+    unsigned short high = i >> 8;
+    unsigned short low = i << 8;
+
+    //OR the high and low parts together to get the complete number
+    return high | low;
+    
+}
+```
+(b)
+```C
+unsigned short swap_bytes(unsigned short i) {
+
+    //Rather than using variables to store the high and low parts perform it
+    //in one statement.
+    return (i >> 8) | (i << 8);
+
+}
+```
 
 ---
