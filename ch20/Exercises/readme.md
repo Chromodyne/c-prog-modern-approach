@@ -182,3 +182,41 @@ Assuming the required bits are already clear and that by "last byte" we mean the
 If instead by "last byte" the opposite order is intended we can simply change the positions of `r` and `b` in the macro.
 
 ---
+
+## Exercise 5 ##
+
+### **Question** ##
+
+Write macros named `GET_RED`, `GET_GREEN`, and `GET_BLUE` that, when given a color as an argument (see **Exercise 4**), returns its 8-bit red, green, and blue intensities.
+
+### **Answer**  ###
+
+```C
+#define GET_RED(c)      ((c) >> 16 & 0xFF)   
+#define GET_GREEN(c)    ((c) >> 8 & 0xFF)
+#define GET_BLUE(c)     ((c) & 0xFF)
+```
+Since our color is coded in the first 24-bits of our bit field I will only be showing those. For example, if our original color is encoded as `0b101101011101101110111010` we can access the red value by bitshifting to the right 16 (`>> 16`) before ANDing (`&`) with `0xFF`.
+
+```
+0b101101011101101110111010 >> 16
+-----------------------------
+0b000000000000000010110101 
+0b000000000000000011111111 &
+----------------------------
+0b000000000000000010110101
+
+```
+This exercise can be repeated for each of macros to test their validity.
+
+Recall from **Exercise 4**, I assumed by "last byte" they meant the highest byte was meant as red. If instead blue was intended to be the higher order byte we would simply swap from bitshifting for red by 16 to instead blue.
+
+```C
+#define GET_RED(c)      ((c) & 0xFF)   
+#define GET_GREEN(c)    ((c) >> 8 & 0xFF)
+#define GET_BLUE(c)     ((c) >> 16 & 0xFF)
+```
+Because bitshifting has a higher order of precedence than bitwise ANDing we do not need parentheses around the bitshift in our macro.
+
+
+---
