@@ -22,10 +22,18 @@ With the former we are using the indirection operator (`*`) to dereference the p
 
 ### **Question** ##
 
+If `i` is an `int` variable and `p` and `q` are pointers to `int`, which of the following assignments are legal?
 
+(a) `p = i;`	(d) `p = &q;`	(g) `p = *q;`
+
+(b) `*p = &i;`	(e) `p = *&q;`	(h) `*p = q;` 
+
+(c) `&p = q;`	(f) `p = q;`	(i) `*p = *q;`
 
 ### **Answer**  ###
 
+(e) `p = *&q;`, (f) `p = q;`, and (i) `*p = *q;` are all legal assignments.
 
+In (e) we are assigning a pointer to another pointer since the `*&` before `q` undo each other and effectively give us `p = q;`. In (f) we are directly assigning a pointer to another pointer. Finally, in (i) we are assigning the value stored at the address that one pointer points to to the value stored at the address another pointer points to.
 
 ---
