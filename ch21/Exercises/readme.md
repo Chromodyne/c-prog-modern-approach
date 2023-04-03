@@ -58,4 +58,63 @@ Make a list of all reserved identifiers in the "future library directions" secti
 
 ### **Answer**  ###
 
+The following reserved identifiers can be found on Pg.400 (Sec. 7.26) of the ISO/IEC 9899:1999 standard.
+
+"**All** external names described below are reserved no matter what headers are included by the program."
+
+**<complex.h>**
+
+```
+cerf	cexpm1	clog2
+cerfc	clog10	clgamma
+cexp2	clog1p	ctgamma
+```
+
+This as well as any of the same names suffixed with `f` or `l`.
+
+**<cytpe.h>**
+
+Function names that begin with either `is` or `to` and a lowercase letter.
+
+
+**<errno.h>**
+
+Macros that begin with `E` and a digit of `E` and an uppercase letter.
+
+**<inttypes.h>**
+
+Macro names that begin with `PRI` or `SCN` followed by any lowercase letter or `X`.
+
+**<locale.h>**
+
+Macros that begin with `LC_` and an uppercase letter.
+
+**<signal.h>**
+
+Macros that begin with `SIG` and an uppercase letter or `SIG_` and an uppercase letter.
+
+**<stdint.h>**
+
+Typedef names beginning with `int` or `uint` and ending with `_t`. Macro names beginning with `INT` or `UINT` and ending with `_MAX`, `_MIN`, or `_C`.
+
+**<stdio.h>**
+
+Lowercase letters when used in conversion specifiers and length modifiers in `fprintf` and `fscanf`.
+
+**<stdlib.h>**
+
+Function names that begin with `str` and a lowercase letter.
+
+**<string.h>**
+
+Function names that begin with `str`, `mem`, or `wcs` and a lowercase letter.
+
+**<wchar.h>**
+
+Function names that begin with `wcs` and a lowercase letter. Also lowercase letters when used as conversion specifiers and length modifiers in `fwprintf` and `fwscanf`.
+
+**<wctype.h>**
+
+Function names that begin with `is` or `to` and a lowercase letter.
+
 ---
