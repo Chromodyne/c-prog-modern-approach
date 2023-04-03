@@ -72,7 +72,7 @@ cexp2	clog1p	ctgamma
 
 This as well as any of the same names suffixed with `f` or `l`.
 
-**<cytpe.h>**
+**<ctype.h>**
 
 Function names that begin with either `is` or `to` and a lowercase letter.
 
@@ -90,7 +90,7 @@ Macro names that begin with `PRI` or `SCN` followed by any lowercase letter or `
 Macros that begin with `LC_` and an uppercase letter.
 
 **<signal.h>**
-
+
 Macros that begin with `SIG` and an uppercase letter or `SIG_` and an uppercase letter.
 
 **<stdint.h>**
@@ -116,5 +116,23 @@ Function names that begin with `wcs` and a lowercase letter. Also lowercase lett
 **<wctype.h>**
 
 Function names that begin with `is` or `to` and a lowercase letter.
+
+---
+
+## Exercise 5 ##
+
+### **Question** ##
+
+The `islower` function, which belongs to `<ctype.h>`, tests whether a character is a lower-case letter. Why would the following macro version of `islower` not be legal, according to the C standard? (You may assume that teh character set is ASCII.)
+
+```C
+#define islower(c) ((c) >= 'a' && (c) <= 'z')
+```
+
+### **Answer**  ###
+
+Per section 7.14 of the C standard regarding use of library functions, a macro definition must be suppressed locally by enclosing the name of the function in parentheses. Alongside this, an invocation of a library function that is implemented as a macro must expand to code that evaluates each of its arguments exactly once.
+
+As we can see from the example macro its name is not enclosed in parentheses and its argument, (`c`), is evaluated twice. Therefore, by the C standard the above macro is illegal.
 
 ---
