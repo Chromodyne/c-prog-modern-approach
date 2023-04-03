@@ -136,3 +136,56 @@ Per section 7.14 of the C standard regarding use of library functions, a macro d
 As we can see from the example macro its name is not enclosed in parentheses and its argument, (`c`), is evaluated twice. Therefore, by the C standard the above macro is illegal.
 
 ---
+
+## Exercise 6 ##
+
+### **Question** ##
+
+The `<ctype.h>` header usually defines most of its functions as macros as well. These macros rely on a static array that's declared in `<ctype.h>` but defined in a separate file. A portion of a typical `<ctype.h` header appears below. Use this sample to answer the following questions.
+
+(a) Why do the names of the "bit" macros (such as `_UPPER`) and the `_ctype` array begin with an underscore?
+
+(b) Explain what the `_ctype` array will contain. Assuming that the character set is ASCII, show the values of the array elements at position 9 (the horizontal tab character), 32 (the space character), 65 (the letter `A`), and 94 (the `^` character. See section 23.5 for a description of what each macro should return.
+
+(c) What's the advantage of using an array to implement these macros?
+
+```C
+#define _UPPER	 0x01	/* upper-case letter */
+#define	_LOWER	 0x02   /* lower-case letter */
+#define _DIGIT	 0x04   /* decimal digit */
+#define _CONTROL 0x08   /* control character */
+#define _PUNCT	 0x10	/* punctuation character */ 
+#define _SPACE	 0x20	/* white-space character */
+#define _HEX	 0x40	/* hexadecimal digit */
+#define _BLANK	 0x80	/* space character */
+
+#define isalnum(c)	(_ctype[c] & (_UPPER|_LOWER|_DIGIT))
+#define isalpha(c)	(_ctype[c] & (_UPPER|_LOWER))
+#define iscntrl(c)	(_ctype[c] & _CONTROL)
+#define isdigit(c)	(_ctype[c] & _DIGIT)
+#define isgraph(c)	(_ctype[c] & (_PUNCT|_UPPER|_LOWER|_DIGIT))
+#define islower(c)	(_ctype[c] & _LOWER)
+#define isprint(c)	(_ctype[c] & (_BLANK|_PUNCT|_UPPER|_LOWER|_DIGIT))
+#define ispunct(c)	(_ctype[c] & _PUNCT)
+#define isspace(c)	(_ctype[c] & _SPACE)
+#define isupper(c)	(_ctype[c] & _UPPER)
+#define isxdigit(c)	(_ctype[c] & (_DIGIT|_HEX))
+```
+
+### **Answer**  ###
+
+(a) Since macro names beginning with an underscore followed by a capital letter (e.g. `_UPPER`) are reserved for standard library use, this prevents the possibility of a collision with a user-defined macro. It also prevents the reuse of macro names in the same header file.
+
+(b) The `_ctype` array is a bitfield (8-bit) lookup table.
+
+The horizontal tab character is considered a white-space character; therefore, it will have the bit value `0b00100000`.
+
+The space character is also considered a white-space character; therefore, it will have the bit value `0b00100000`.
+
+The letter `A` is considered an upper-case letter; therefore, it will have the value `0b00000001`.
+
+The `^` character is considered a punctuation character; therefore, it will have the value `0b00010000`.
+
+(c) Array lookups by index is incredibly swift, O(1); therefore, the main advantage is speed.
+
+---
