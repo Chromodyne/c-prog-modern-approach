@@ -22,6 +22,40 @@ Having located the header files on your system (see **Exercise 1**), find a stan
 
 ### **Answer**  ###
 
+An example of a standard header with a macro that hides a function is `setjmp.h`.
 
+```C
+extern int setjmp(jump_buf __env) __THROWNL;
+```
+
+is hidden by:
+
+```C
+#define setjmp(env) _setjmp (env)
+```
+
+There are numerous other examples.
+
+---
+
+## Exercise 3 ##
+
+### **Question** ##
+
+When a macro hides a function, which must come first in the header file: the macro definition or the function prototype? Justify your answer.
+
+### **Answer**  ###
+
+The function prototype must come first. This is because the preprocessor must be aware of the function before it can hide it. It cannot be aware of it if it has not encountered the function or its prototype first.
+
+---
+
+## Exercise 4 ##
+
+### **Question** ##
+
+Make a list of all reserved identifiers in the "future library directions" section of the C99 standard. Distinguish between identifiers that are reserved for use only when a specific header is included versus identifiers that are reserved for use as external names.
+
+### **Answer**  ###
 
 ---
