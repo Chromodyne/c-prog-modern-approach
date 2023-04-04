@@ -79,7 +79,40 @@ void avg_sum(double a[], int n, double *avg, double *sum) {
 }
 ```
 
-The key to this exercise is to realize that `sum` and `avg` are passed in as pointer variables. In order to modify their values we mustdereference them with the indirection (`*`) operator!
+The key to this exercise is to realize that `sum` and `avg` are passed in as pointer variables. In order to modify their values we must dereference them with the indirection (`*`) operator!
 
+
+---
+
+## Exercise 4 ##
+
+### **Question** ##
+
+Write the following function:
+
+```C
+void swap(int *p, int *q);
+```
+
+When passed the addresses of two variables, `swap` should exchange the values of the variables:
+
+```C
+swap(&i, &j);
+```
+
+### **Answer**  ###
+
+```C
+void swap(int *p, int *q) {
+
+	int temp = *p;
+
+	*p = *q;
+	*q = temp;
+
+}
+```
+
+This is a very simple exercise. Store the value of one of the variables into a temporary variable (`temp` in this case), then perform the swap. Do not forget to dereference the pointer variables to properly assign values!
 
 ---
