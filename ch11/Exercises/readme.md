@@ -97,7 +97,7 @@ void swap(int *p, int *q);
 When passed the addresses of two variables, `swap` should exchange the values of the variables:
 
 ```C
-swap(&i, &j);
+swap(&i, &j);		/* exchanges the values of i and j */
 ```
 
 ### **Answer**  ###
@@ -114,5 +114,32 @@ void swap(int *p, int *q) {
 ```
 
 This is a very simple exercise. Store the value of one of the variables into a temporary variable (`temp` in this case), then perform the swap. Do not forget to dereference the pointer variables to properly assign values!
+
+---
+
+## Exercise 5 ##
+
+### **Question** ##
+
+Write the following function:
+
+```C
+void split_time(long total_sec, int *hr, int *min, int *sec);
+```
+
+`total_sec` is a time represented as the number of seconds since midnight. `hr`, `min`, and `sec` are pointers to variables in which the function will store the equivalent time in hours (0-23), minutes (0-59), and seconds (0-59), respectively.
+
+### **Answer**  ###
+
+```C
+void split_time(long total_sec, int *hr, int *min, int *sec) {
+
+	*hr = total_sec / 3600;
+	total_sec -= (long) *hr / 3600;
+	*min = total_sec / 60;
+	total_sec -= (long) *min / 60;
+	*sec = total_sec;
+}
+```
 
 ---
