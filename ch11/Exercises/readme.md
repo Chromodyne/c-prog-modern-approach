@@ -143,3 +143,42 @@ void split_time(long total_sec, int *hr, int *min, int *sec) {
 ```
 
 ---
+
+## Exercise 6 ##
+
+### **Question** ##
+
+Write the following function:
+
+```C
+void find_two_largest(int a[], int n, int *largest. int *second_largest);
+```
+
+When passed an array of length `n`, the function will search for its largest and second largest elements, storing them in the variables pointed to by `largest` and `second_largest`, respectively.
+
+### **Answer**  ###
+
+```C
+void find_two_largest(int a[], int n, int *largest, int *second_largest) {
+
+	*second_largest = a[1];
+	*largest = a[0];
+
+	for (int i = 1; i < n; i++ {
+
+		if (a[i] >= *largest) {
+			
+			*second_largest = *largest;
+			*largest = a[i];
+
+		} else if (a[i] <= *largest && a[i] > *second_largest) {
+
+			*second_largest = a[i];
+
+		}
+	}
+}
+
+```
+
+---	
