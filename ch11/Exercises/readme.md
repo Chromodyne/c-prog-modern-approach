@@ -77,6 +77,7 @@ void avg_sum(double a[], int n, double *avg, double *sum) {
 	*avg = *sum / n;
 
 }
+```
 
 The key to this exercise is to realize that `sum` and `avg` are passed in as pointer variables. In order to modify their values we mustdereference them with the indirection (`*`) operator!
 
