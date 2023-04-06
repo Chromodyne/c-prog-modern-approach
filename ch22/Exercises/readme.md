@@ -286,3 +286,48 @@ While the program will compile, it would not perform as expected.
 The relational not-equal operator (`!=`) has a higher order of precedence than the assignment operator (`=`). `EOF` is defined as `-1` so `getc(source_fp) != EOF` will give us `1` (true) since `getc(source_fp)` will not equal `-1`. Therefore we will be assigning `ch` the value of `1` in the condition of the `while` loop.
 
 ---
+
+## Exercise 12 ##
+
+### **Question** ##
+
+Find the error in the following function and show how to fix it.
+
+```C
+int count_periods(const char *filename)
+{
+    FILE *fp;
+    int n = 0;
+
+    if ((fp = fopen(filename, "r")) != NULL) {
+        while (fgetc(fp) != EOF)
+            if (fgetc(fp) == '.')
+                n++;
+        fclose(fp);
+    }
+    return n;
+}
+```
+
+### **Answer** ###
+
+The issue is that we are calling the `fgetc` function once more than necessary. We can rectify this by assigning `fgetc(fp)` to a variable so that it isn't called outside of the loop condition.
+
+```C
+int count_periods(const char *filename)
+{
+    FILE *fp;
+    int n = 0;
+    char ch;
+
+    if ((fp = fopen(filename, "r")) != NULL) {
+        while ((ch = fgetc(fp)) != EOF)
+            if (ch == '.')
+                n++;
+        fclose(fp);
+    }
+    return n;
+}
+```
+
+---
