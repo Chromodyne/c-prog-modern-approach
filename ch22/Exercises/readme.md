@@ -281,7 +281,7 @@ Would the program compile without an error? If so, what would the program do whe
 
 ### **Answer** ###
 
-While the program will compile, it would not perform as expect. 
+While the program will compile, it would not perform as expected. 
 
 The relational not-equal operator (`!=`) has a higher order of precedence than the assignment operator (`=`). `EOF` is defined as `-1` so `getc(source_fp) != EOF` will give us `1` (true) since `getc(source_fp)` will not equal `-1`. Therefore we will be assigning `ch` the value of `1`.
 
