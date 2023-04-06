@@ -119,6 +119,6 @@ Let's break down the conversion specification first:
 (d) `002.35222e-05`
 
 
-**Note:** Regarding `(c)` and (d) above, depending on your compiler settings, exponents may show `3` digits by default. *e.g.* `e+009` instead of `e+09`. For example, after verifying my answers using `gcc` I found my answers to for `(c)` and `(d)` to use 3 digits instead of two. I have used the logical solutions I came to here despite the discrepancy during verification. The author's official solutions also use assume your compiler will have output show two digits *e.g.* `e+09`.
+**Note:** Regarding `(c)` and `(d)` above, depending on your compiler settings, exponents may show `3` digits by default. *e.g.* `e+009` instead of `e+09`. For example, after verifying my answers using `gcc` I found my answers to for `(c)` and `(d)` to use 3 digits instead of two. I have used the logical solutions I came to here despite the discrepancy during verification. The author's official solutions also use assume your compiler will have output show two digits *e.g.* `e+09`.
 
 ---
