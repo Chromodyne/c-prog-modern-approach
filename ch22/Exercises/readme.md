@@ -49,3 +49,44 @@ Indicate which mode string is most likely to be passed to `fopen` in each of the
 (d) `r` since the shell script should already contain the necessary commands to be executed so it shouldn't require being written to.
 
 ---
+
+## Exercise 3 ##
+
+### **Question** ##
+
+Find the error in the following program fragment and show how to fix it.
+
+```C
+FILE *fp;
+
+if (fp = fopen(filename, "r")) {
+    /* read characters until end-of-file */
+} 
+
+fclose(fp);
+```
+### **Answer** ###
+
+The issue with the above code fragment is that it attempts to use `fclose` on `fp` but doesn't test whether or not `fp` is `null`. We must always ensure that our pointer is not `null` before attempting to close it. 
+
+There are various ways to do this but I opted to use a simple `else` statement to terminate execution if `fp` is `null`. This seems to be the simplest way here since we're reading characters inside the `if` statement.
+
+```C
+FILE *fp; ;
+
+//Check if the pointer is null, if so, terminate program
+if (fp = fopen(filename, "r")) {
+   
+   /* read characters until end-of-file */
+
+} else {
+
+    fprint(stderr, "Cannot open file: %s\n", filename);
+    exit(EXIT_FAILURE);
+
+}
+
+fclose(fp);
+```
+
+---
