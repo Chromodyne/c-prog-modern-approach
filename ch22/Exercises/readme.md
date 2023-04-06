@@ -158,9 +158,47 @@ otherwise, where `n` is the value of `widget`. You are not allowed to use the `i
 ### **Answer** ###
 
 ```C
-printf("%d %s",(widget == 1 ? 1 : widget), (widget == 1 ? "widget\n" : "widgets\n"));
+printf("%d %s", (widget == 1 ? 1 : widget), (widget == 1 ? "widget\n" : "widgets\n"));
 ```
 We can easily implement this functionality using a couple of ternary operations (`?`). We can also condense theses statements further by always using the value of `widget` and appending an `s` onto the end of our string if necessary; however, I have devised the above solution to be as easy to read as possible.
 
+---
+
+## Exercise 7 ##
+
+### **Question** ##
+
+Suppose that we call `scanf` as follows:
+
+```C
+n = scanf("%d%f%d", &i, &x, &j);
+```
+(`i`, `j`, and `n` are `int` variables and `x` is a `float` variable.) Assuming that the input stream contains the characters shown, give the values of `i`, `j`, `n`, and `x` after the call. In addition, indicate which characters were consumed by the call.
+
+```
+(a) 10●20●30¤
+(b) 1.0●2.0●3.0¤
+(c) 0.1●0.2●0.3¤
+(d) .1●.2●.3¤
+```
+*Note:* Here `●` indicates a whitespace (` `) and `¤` indicates a newline character (`\n`).
+
+### **Answer** ###
+
+(a) `i = 10, x = 20.000000, j = 30, n = 3`
+
+The above output is obtained because `scanf` is able to match each of the inputs successfully with the only thing of note being that `20` is converted to a `float` type automatically.
+
+(b) `i = 1, x = 0.000000, j = 2, n = 3`
+
+In this, the issue is that matching for the first input stops when the decimal is reached. This means that `i` is read as `1` and `x` as `.0`. This ultimately means that `j` is read as `2`.
+
+(c) `i = 0, x = 0.100000, j = 0, n = 3`
+
+As above, the decimal ceases `scanf` reading into `i` and makes `x` be input as the `.1` following the decimal. Likewise `j` ceases being written into by the decimal following `0` on `0.2`.
+
+(d) `i = undefined, x = undefined, j = undefined, n = 0`
+
+Here none of the matching is able to match correctly and as such all variables end up remaining with their original values.  `n` is `0` because nothing was successfully matched. I have used `undefined` here to indicate no change because if these variables were not initialized they would by definition be undefined.
 
 ---
