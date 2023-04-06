@@ -122,3 +122,45 @@ Let's break down the conversion specification first:
 **Note:** Regarding `(c)` and `(d)` above, depending on your compiler settings, exponents may show `3` digits by default. *e.g.* `e+009` instead of `e+09`. For example, after verifying my answers using `gcc` I found my answers to for `(c)` and `(d)` to use 3 digits instead of two. I have used the logical solutions I came to here despite the discrepancy during verification. The author's official solutions also use assume your compiler will have output show two digits *e.g.* `e+09`.
 
 ---
+
+## Exercise 5 ##
+
+### **Question** ##
+
+Is there any difference between the `printf` conversion specification `%.4d` and `%04d`? If so, explain what it is.
+
+### **Answer** ###
+
+No. These statements are functionally equivalent.
+
+In `%.4d` we are specifying the precision with the `.4` meaning the number of digits to print. If the number has fewer digits than specified (`4`) we will pad it with leading zeroes.
+
+Next let's analyze `%04d`. The `0` indicates we will pad with leading zeroes up to the specified minimum field width (`4` in this case). The `0` flag will only be ignored if we had specified a precision as well, which we haven't.
+
+Therefore these two conversion specifications are equivalent.
+
+---
+
+## Exercise 6 ##
+
+### **Question** ##
+
+Write a call of `printf` that prints
+
+`1 widget`
+
+if the `widget` variable (of type `int`) has the value `1`, and
+
+`n widgets`
+
+otherwise, where `n` is the value of `widget`. You are not allowed to use the `if` statement or any other statement; the answer must be a single call of `printf`.
+
+### **Answer** ###
+
+```C
+printf("%d %s",(widget == 1 ? 1 : widget), (widget == 1 ? "widget\n" : "widgets\n"));
+```
+We can easily implement this functionality using a couple of ternary operations (`?`). We can also condense theses statements further by always using the value of `widget` and appending an `s` onto the end of our string if necessary; however, I have devised the about solution to be as easy to read as possible.
+
+
+---
