@@ -202,3 +202,62 @@ As above, the decimal ceases `scanf` reading into `i` and makes `x` be input as 
 Here none of the matching is able to match correctly and as such all variables end up remaining with their original values.  `n` is `0` because nothing was successfully matched. I have used `undefined` here to indicate no change because if these variables were not initialized they would by definition be undefined.
 
 ---
+
+## Exercise 8 ##
+
+### **Question** ##
+
+In previous chapters, we've used the `scanf` format string `" %c"` when we wanted to skip white-space characters and read a nonblank character. Some programmers use `"%1s"` instead. Are the two techniques equivalent? If not, what are the differences?
+
+### **Answer** ###
+
+No, these two techniques are not equivalent. The difference between the two lies in the fact that `%1s` will store a null character (`\0`) after storing a character whereas `" %c` will not. **Table 22.12** on **page 561** is a great reference for understanding this concept.
+
+---
+
+## Exercise 9 ##
+
+### **Question** ##
+
+Which one of the following calls is *not* a valid way of reading one character from the standard input stream?
+
+```
+(a) getch()
+(b) getchar()
+(c) getc(stdin)
+(d) fgetc(stdin)
+```
+
+### **Answer** ###
+
+`(a)` is not a valid way of reading from `stdin`. `getch()` requires an argument that is a pointer to the stream it will be reading from. `getch()` is defined as:
+
+```C
+int getc(FILE *stream);
+```
+
+---
+
+## Exercise 10 ##
+
+### **Question** ##
+
+The `fcopy.c` program has one minor flaw: it doesn't check for errors as it's writing to the destination file. Errors during writing are rare, but do occasionally occur (the disk might become full, for example). Show how to add the missing error check to the program, assuming that we want it to display a message and terminate immediately if an error occurs.
+
+### **Answer** ###
+
+We can add an additional `if` statement inside the `while` loop that it uses to write to check if there is an issue:
+
+```C
+while ((ch = getc(source_fp)) != EOF) {
+
+    //If we hit EOF unexpectedly, print a message to stderr and terminate execution.
+    if (putc(ch, dest_fp) == EOF) {
+        fprintf(stderr, "Failure during writing to file.\n");
+        exit(EXIT_FAILURE);
+    }
+
+}
+```
+
+---
