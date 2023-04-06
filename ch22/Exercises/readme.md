@@ -160,7 +160,7 @@ otherwise, where `n` is the value of `widget`. You are not allowed to use the `i
 ```C
 printf("%d %s",(widget == 1 ? 1 : widget), (widget == 1 ? "widget\n" : "widgets\n"));
 ```
-We can easily implement this functionality using a couple of ternary operations (`?`). We can also condense theses statements further by always using the value of `widget` and appending an `s` onto the end of our string if necessary; however, I have devised the about solution to be as easy to read as possible.
+We can easily implement this functionality using a couple of ternary operations (`?`). We can also condense theses statements further by always using the value of `widget` and appending an `s` onto the end of our string if necessary; however, I have devised the above solution to be as easy to read as possible.
 
 
 ---
