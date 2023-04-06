@@ -32,10 +32,10 @@ Indicate whether each of the following files is more likely to contain text data
 Indicate which mode string is most likely to be passed to `fopen` in each of the following situations:
 
 ```
-(a) A database management system opens a file containing records to be updated
-(b) A mail program opens a file of saved messages so that it can add additional messages to the end
-(c) A graphics program opens a file containing a picture to be displayed on the screen
-(d) An operating system command interpreter opens a "shell script" (or "batch file") containing commands to be executed
+(a) A database management system opens a file containing records to be updated.
+(b) A mail program opens a file of saved messages so that it can add additional messages to the end.
+(c) A graphics program opens a file containing a picture to be displayed on the screen.
+(d) An operating system command interpreter opens a "shell script" (or "batch file") containing commands to be executed.
 ```
 
 ### **Answer**  ###
@@ -88,5 +88,37 @@ if (fp = fopen(filename, "r")) {
 
 fclose(fp);
 ```
+---
+
+## Exercise 4 ##
+
+### **Question** ##
+
+Show how each of the following numbers will look if displayed by `printf` with `%#012.5g` as the conversion specification:
+
+(a) `83.7361`
+
+(b) `28748.6607`
+
+(c) `1054932234.0`
+
+(d) `0.0000235218`
+
+### **Answer** ###
+
+Let's break down the conversion specification first:
+
+`%` is simply indicates we're starting a conversion specification. `#` indicates trailing zeroes will not be removed since we're using the `g` conversion and as such we will always show a decimal point. `0` indicates we will pad with leading zeroes since we're using the `g` specifier. `12` indicates our minimum field width which means numbers that aren't this many characters long will be padded (and right justified). `.5` indicates our precision, or the number of significant digits (since we're using the `g` specifier.) `g` indicates we will convert a `double` to `f` or `e` form with the latter being selected if the exponent is less than -4 or `>=` to the precision. 
+
+(a) `00000083.7361`
+
+(b) `00000028649.`
+
+(c) `001.0549e+09`
+
+(d) `002.35222e-05`
+
+
+**Note:** Regarding `(c)` and (d) above, depending on your compiler settings, exponents may show `3` digits by default. *e.g.* `e+009` instead of `e+09`. For example, after verifying my answers using `gcc` I found my answers to for `(c)` and `(d)` to use 3 digits instead of two. I have used the logical solutions I came to here despite the discrepancy during verification. The author's official solutions also use assume your compiler will have output show two digits *e.g.* `e+09`.
 
 ---
