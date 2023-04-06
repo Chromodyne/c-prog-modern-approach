@@ -259,5 +259,30 @@ while ((ch = getc(source_fp)) != EOF) {
 
 }
 ```
+---
+
+## Exercise 11 ##
+
+### **Question** ##
+
+The following loop appears in the `fcopy.c` program:
+
+```C
+while ((ch = getc(source_fp)) != EOF)
+    putc(ch, dest_fp);
+```
+Suppose that we neglected to put parentheses around `ch = getc(source_fp`:
+
+```C
+while (ch = getc(source_fp) != EOF)
+    putc(ch, dest_fp);
+```
+Would the program compile without an error? If so, what would the program do when it's run?
+
+### **Answer** ###
+
+While the program will compile, it would not perform as expect. 
+
+The relational not-equal operator (`!=`) has a higher order of precedence than the assignment operator (`=`). `EOF` is defined as `-1` so `getc(source_fp) != EOF` will give us `1` (true) since `getc(source_fp)` will not equal `-1`. Therefore we will be assigning `ch` the value of `1`.
 
 ---
